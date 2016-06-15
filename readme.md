@@ -1,0 +1,1 @@
+# Pomocné třídy pro Nette Framework
