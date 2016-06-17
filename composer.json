@@ -1,6 +1,6 @@
 {
-    "name": "nattreid/helpers",
-    "description": "Helpers for Nette Framework",
+    "name": "NAttreid/utils",
+    "description": "Utils for Nette Framework",
     "type": "library",
     "license": ["Unlicense"],
     "authors": [
