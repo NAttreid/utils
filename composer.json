@@ -9,16 +9,9 @@
             "email": "attreid@gmail.com"
         }
     ],
-    "repositories": [
-        {
-            "type": "git",
-            "url": "git@git.newtravel.cz:nattreid/form.git"
-        }
-    ],
     "require": {
         "php": ">= 5.6",
-        "nette/utils": "~2.3",
-        "nattreid/form": "dev-master"
+        "nette/utils": "~2.3"
     },
     "require-dev": {
         "nette/tester": "~1.6"
