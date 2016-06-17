@@ -1,6 +1,6 @@
 <?php
 
-namespace nattreid\helpers;
+namespace NAttreid\Utils;
 
 /**
  * Pomocna trida pro cisla
