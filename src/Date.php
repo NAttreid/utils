@@ -2,7 +2,7 @@
 
 namespace NAttreid\Utils;
 
-use nattreid\form\DateRange\Range;
+use NAttreid\Form\DateRange\Range;
 
 /**
  * Pomocna trida pro datum
