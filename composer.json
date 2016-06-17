@@ -1,5 +1,5 @@
 {
-    "name": "NAttreid/utils",
+    "name": "nattreid/utils",
     "description": "Utils for Nette Framework",
     "type": "library",
     "license": ["Unlicense"],
