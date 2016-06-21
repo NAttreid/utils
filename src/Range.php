@@ -37,8 +37,8 @@ class Range {
     public static function createFromString($interval) {
         list($from, $to) = explode(self::$delimiter, $interval);
 
-        $dateFrom = DateTime::createFromFormat(self::$format, $from);
-        $dateTo = DateTime::createFromFormat(self::$format, $to);
+        $dateFrom = \DateTime::createFromFormat(self::$format, $from);
+        $dateTo = \DateTime::createFromFormat(self::$format, $to);
 
         return new self($dateFrom, $dateTo);
     }
