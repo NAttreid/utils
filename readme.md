@@ -1,12 +1,6 @@
 # Pomocné třídy pro Nette Framework
 
-## Hasher
-Pro použití je třeba zaregistrovat
-```neon
-services:
-    - NAttreid\Utils\Hasher(%salt%)
-```
-
+## Nastavení
 Pro lokalizaci je třeba nastavit *locale* v **BasePresenter**
 ```php
 protected function startup() {
@@ -18,4 +12,12 @@ protected function startup() {
     
     \NAttreid\Utils\Number::setLocale($locale);
     \NAttreid\Utils\Date::setLocale($locale);
+```
+
+
+## Hasher
+Pro použití je třeba zaregistrovat
+```neon
+services:
+    - NAttreid\Utils\Hasher(%salt%)
 ```
