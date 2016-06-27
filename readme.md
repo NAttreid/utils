@@ -13,11 +13,3 @@ protected function startup() {
     \NAttreid\Utils\Number::setLocale($locale);
     \NAttreid\Utils\Date::setLocale($locale);
 ```
-
-
-## Hasher
-Pro použití je třeba zaregistrovat
-```neon
-services:
-    - NAttreid\Utils\Hasher(%salt%)
-```
