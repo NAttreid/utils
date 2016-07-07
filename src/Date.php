@@ -44,8 +44,14 @@ class Date extends Lang {
         'cs' => 'd.m.Y'
     ];
 
+    /**
+     * Formatovani
+     * @param string $type
+     * @return string
+     */
     public static function getFormat($type) {
-        return self::$$type;
+        $arr = self::$$type;
+        return $arr[self::$locale];
     }
 
     /**
