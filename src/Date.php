@@ -11,6 +11,14 @@ use NAttreid\Form\DateRange\Range;
  */
 class Date extends Lang {
 
+    const
+            DAY_SHORT = 'dayNamesShort',
+            DAY = 'dayNames',
+            MONTH_SHORT = 'monthNamesShort',
+            MONTH = 'monthNames',
+            DATETIME = 'datetime',
+            DATE = 'date';
+
     private static $dayNamesShort = [
         'en' => [1 => 'mon', 2 => 'tue', 3 => 'wed', 4 => 'thu', 5 => 'fri', 6 => 'sat', 7 => 'sun'],
         'cs' => [1 => 'po', 2 => 'út', 3 => 'st', 4 => 'čt', 5 => 'pá', 6 => 'so', 7 => 'ne']
@@ -35,6 +43,10 @@ class Date extends Lang {
         'en' => 'm/d/Y',
         'cs' => 'd.m.Y'
     ];
+
+    public static function getFormat($type) {
+        return self::$$type;
+    }
 
     /**
      * Vrati pocatecni rok - aktualni rok. V pripade, ze se shoduji pouze aktualni
