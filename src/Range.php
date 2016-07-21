@@ -43,24 +43,8 @@ class Range {
         return new self($dateFrom, $dateTo);
     }
 
-    /**
-     * Vrati from jako datum bez casu
-     * @return string
-     */
-    public function getFromDate() {
-        return $this->from->format(self::$format);
-    }
-
-    /**
-     * Vrati to jako datum bez casu
-     * @return string
-     */
-    public function getToDate() {
-        return $this->to->format(self::$format);
-    }
-
     public function __toString() {
-        return $this->getFromDate() . self::$delimiter . $this->getToDate();
+        return $this->from->format(self::$format) . self::$delimiter . $this->to->format(self::$format);
     }
 
 }
