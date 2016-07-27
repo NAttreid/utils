@@ -1,6 +1,6 @@
 (function ($, window) {
     if (window.jQuery === undefined) {
-        console.error('Plugin "jQuery" required by "jsUtils/jQuery.js" is missing!');
+        console.error('Plugin "jQuery" required by "utils/jQuery.js" is missing!');
         return;
     }
 
