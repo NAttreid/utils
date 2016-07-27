@@ -2,7 +2,9 @@
 
 namespace NAttreid\Utils;
 
-use Nette\Database\Table\Selection;
+use Nette\Database\Table\Selection,
+    Nextras\Dbal\QueryBuilder\QueryBuilder,
+    Nextras\Orm\Mapper\Dbal\DbalCollection;
 
 /**
  * Pomocna trida pro hashovani
@@ -32,13 +34,21 @@ class Hasher {
 
     /**
      * Vyhleda podle hashe
-     * @param Selection $selection
+     * @param Selection|QueryBuilder|DbalCollection $data
      * @param string $column
      * @param string $hash
-     * @return Selection
+     * @return Selection|QueryBuilder
      */
-    public function hashSQL(Selection $selection, $column, $hash) {
-        return $selection->where("ENCRYPT(`$column`,  {$this->salt})", $hash);
+    public function hashSQL($data, $column, $hash) {
+        if ($data instanceof DbalCollection) {
+            $data = $data->getQueryBuilder();
+        }
+
+        if ($data instanceof Selection) {
+            return $data->where("ENCRYPT(`$column`,  {$this->salt})", $hash);
+        } elseif ($data instanceof QueryBuilder) {
+            return $data->andWhere('ENCRYPT(%column, %s) = %s', $column, $this->salt, $hash);
+        }
     }
 
     /**
