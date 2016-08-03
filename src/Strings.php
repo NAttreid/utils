@@ -2,14 +2,14 @@
 
 namespace NAttreid\Utils;
 
-use Nette\Utils\Strings;
+use Nette\Utils\Strings as NStrings;
 
 /**
  * Pomocna trida pro retezce
  * 
  * @author Attreid <attreid@gmail.com>
  */
-class String {
+class Strings {
 
     /**
      * Vrati klicova slova z textu
@@ -23,7 +23,7 @@ class String {
         preg_match_all('/<a[^>]*>[^<]+<\/a>/i', $text, $found);
         if (isset($found[0])) {
             foreach ($found[0] as $kw) {
-                $keyWords[] = Strings::lower(Strings::trim(strip_tags($kw)));
+                $keyWords[] = NStrings::lower(NStrings::trim(strip_tags($kw)));
             }
         }
 
@@ -31,13 +31,13 @@ class String {
         preg_match_all('/<(h2|strong)[^>]*>[^<]+<\/(h2|strong)>/i', $text, $found);
         if (isset($found[0])) {
             foreach ($found[0] as $kw) {
-                $keyWords[] = Strings::lower(Strings::trim(strip_tags($kw)));
+                $keyWords[] = NStrings::lower(NStrings::trim(strip_tags($kw)));
             }
         }
 
         $result = implode(', ', array_unique($keyWords));
 
-        return Strings::truncate($result, $maxLen, '');
+        return NStrings::truncate($result, $maxLen, '');
     }
 
     /**
