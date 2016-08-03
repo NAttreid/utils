@@ -29,7 +29,7 @@ class Hasher {
      * @return string
      */
     public function hash($string) {
-        return crypt($string, $this->salt);
+        return hash('sha256', $string . $this->salt);
     }
 
     /**
@@ -45,9 +45,9 @@ class Hasher {
         }
 
         if ($data instanceof Selection) {
-            return $data->where("ENCRYPT(`$column`,  {$this->salt})", $hash);
+            return $data->where("SHA2(CONCAT(`$column`,  '{$this->salt}'), 256)", $hash);
         } elseif ($data instanceof QueryBuilder) {
-            return $data->andWhere('ENCRYPT(%column, %s) = %s', $column, $this->salt, $hash);
+            return $data->andWhere('SHA2(CONCAT(%column, %s), 256) = %s', $column, $this->salt, $hash);
         }
     }
 
