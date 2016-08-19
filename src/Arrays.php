@@ -9,8 +9,27 @@ namespace NAttreid\Utils;
  */
 class Arrays {
 
-    public static function isAssoc($arr) {
+    /**
+     * Je pole asociativni
+     * @param array $arr
+     * @return boolean
+     */
+    public static function isAssoc(array $arr) {
         return array_keys($arr) !== range(0, count($arr) - 1);
+    }
+
+    /**
+     * Vlozi do pole na dane misto
+     * @param array $array
+     * @param int $position
+     * @param mixed $insert
+     */
+    public static function slice(array &$array, $position, $insert) {
+        if (isset($array[$position])) {
+            array_splice($array, $position, 0, [$insert]);
+        } else {
+            $array[$position] = $insert;
+        }
     }
 
 }
