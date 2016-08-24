@@ -1,5 +1,4 @@
-vendor
-nbproject
-bower_components
-src_*
-composer.lock
+/vendor
+/nbproject
+/bower_components
+/composer.lock
