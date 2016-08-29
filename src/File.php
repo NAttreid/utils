@@ -34,6 +34,14 @@ class File {
             $dir->close();
         }
     }
+    /**
+     * Je adresar prazdny?
+     * @param string $path
+     * @return boolean
+     */
+    public static function isDirEmpty($path){
+        return (count(glob("$path/*")) === 0 );
+    }
 
     /**
      * Rozbaleni adresare ZIP
