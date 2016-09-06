@@ -7,20 +7,22 @@ namespace NAttreid\Utils;
  *
  * @author Attreid <attreid@gmail.com>
  */
-abstract class Lang {
+abstract class Lang
+{
 
-    /**
-     * Lokalizace
-     * @var string
-     */
-    protected static $locale;
+	/**
+	 * Lokalizace
+	 * @var string
+	 */
+	protected static $locale;
 
-    /**
-     * Nastavi locale
-     * @param string $locale
-     */
-    public static function setLocale($locale) {
-        self::$locale = $locale;
-    }
+	/**
+	 * Nastavi locale
+	 * @param string $locale
+	 */
+	public static function setLocale($locale)
+	{
+		self::$locale = $locale;
+	}
 
 }

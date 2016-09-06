@@ -1,6 +1,6 @@
 var gulp = require('gulp'),
-        concat = require('gulp-concat'),
-        uglify = require('gulp-uglify');
+    concat = require('gulp-concat'),
+    uglify = require('gulp-uglify');
 
 var paths = {
     'dev': {
@@ -22,24 +22,24 @@ var files = [
 
 gulp.task('concat', function () {
     return gulp.src(files)
-            .pipe(concat('utils.js'))
-            .pipe(gulp.dest(paths.production.js));
+        .pipe(concat('utils.js'))
+        .pipe(gulp.dest(paths.production.js));
 });
 
 gulp.task('minify', function () {
     return gulp.src(files)
-            .pipe(concat('utils.min.js'))
-            .pipe(uglify())
-            .pipe(gulp.dest(paths.production.js));
+        .pipe(concat('utils.min.js'))
+        .pipe(uglify())
+        .pipe(gulp.dest(paths.production.js));
 });
 
 gulp.task('boundled', function () {
     var boundled = files;
-    boundled.unshift(paths.dev.vendor + 'jquery/dist/jquery.js')
+    boundled.unshift(paths.dev.vendor + 'jquery/dist/jquery.js');
     return gulp.src(boundled)
-            .pipe(concat('utils.boundled.min.js'))
-            .pipe(uglify())
-            .pipe(gulp.dest(paths.production.js));
+        .pipe(concat('utils.boundled.min.js'))
+        .pipe(uglify())
+        .pipe(gulp.dest(paths.production.js));
 });
 
 gulp.task('watch', function () {

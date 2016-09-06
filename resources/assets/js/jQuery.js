@@ -24,21 +24,21 @@
                 var top = $(options.to).offset().top - element.height() + options.bottom;
                 if (topOffset <= top) {
                     element
-                            .removeAttr('style')
-                            .css('position', 'absolute')
-                            .css('top', top + 'px')
-                            .addClass('fixed')
-                            .removeClass('moving');
+                        .removeAttr('style')
+                        .css('position', 'absolute')
+                        .css('top', top + 'px')
+                        .addClass('fixed')
+                        .removeClass('moving');
                 } else {
                     clear();
                 }
             } else if (($(window).scrollTop() > topOffset - options.top)) {
                 element
-                        .removeAttr('style')
-                        .css('position', 'fixed')
-                        .css('top', 0)
-                        .addClass('moving')
-                        .removeClass('fixed');
+                    .removeAttr('style')
+                    .css('position', 'fixed')
+                    .css('top', 0)
+                    .addClass('moving')
+                    .removeClass('fixed');
                 if (options.width !== null) {
                     element.css('width', getWidth());
                 }
@@ -49,9 +49,9 @@
 
         function clear() {
             element
-                    .removeAttr('style')
-                    .removeClass('fixed')
-                    .removeClass('moving');
+                .removeAttr('style')
+                .removeClass('fixed')
+                .removeClass('moving');
         }
 
         function getWidth() {
@@ -121,7 +121,7 @@
 
     /**
      * Metoda spousti callback pri kliku mimo dany objekt
-     * @param {callback} callback
+     * @param callback
      * @returns {jQuery.fn}
      */
     $.fn.clickOut = function (callback) {
@@ -168,7 +168,7 @@
 
     /**
      * Metoda spousti callback pri najeti okna k danemu elementu
-     * @param {callback} callback
+     * @param callback
      * @returns {jQuery.fn}
      */
     $.fn.onScrollTo = function (callback) {
@@ -190,6 +190,7 @@
                     }
                 });
             }
+
             bindEvent();
         }
         return this;
@@ -279,7 +280,7 @@
      * Nacteni skriptu
      * @param {string} url
      * @param {object} options
-     * @returns {jqXHR}
+     * @returns {object}
      */
     $.cachedScript = function (url, options) {
         options = $.extend(options || {}, {

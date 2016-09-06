@@ -95,7 +95,7 @@ var MD5Hasher = {
     },
     md51: function (s) {
         var n = s.length,
-                state = [1732584193, -271733879, -1732584194, 271733878], i;
+            state = [1732584193, -271733879, -1732584194, 271733878], i;
         for (i = 64; i <= s.length; i += 64) {
             this.md5cycle(state, this.md5blk(s.substring(i - 64, i)));
         }
@@ -117,9 +117,9 @@ var MD5Hasher = {
         var md5blks = [], i;
         for (i = 0; i < 64; i += 4) {
             md5blks[i >> 2] = s.charCodeAt(i)
-                    + (s.charCodeAt(i + 1) << 8)
-                    + (s.charCodeAt(i + 2) << 16)
-                    + (s.charCodeAt(i + 3) << 24);
+                + (s.charCodeAt(i + 1) << 8)
+                + (s.charCodeAt(i + 2) << 16)
+                + (s.charCodeAt(i + 3) << 24);
         }
         return md5blks;
     },
@@ -127,7 +127,7 @@ var MD5Hasher = {
         var s = '', j = 0;
         for (; j < 4; j++)
             s += this.hex_chr[(n >> (j * 8 + 4)) & 0x0F]
-                    + this.hex_chr[(n >> (j * 8)) & 0x0F];
+                + this.hex_chr[(n >> (j * 8)) & 0x0F];
         return s;
     },
     hex: function (x) {
@@ -145,7 +145,7 @@ var MD5Hasher = {
         if (this.hash('hello') !== '5d41402abc4b2a76b9719d911017c592') {
             this.add32 = function (x, y) {
                 var lsw = (x & 0xFFFF) + (y & 0xFFFF),
-                        msw = (x >> 16) + (y >> 16) + (lsw >> 16);
+                    msw = (x >> 16) + (y >> 16) + (lsw >> 16);
                 return (msw << 16) | (lsw & 0xFFFF);
             };
         }

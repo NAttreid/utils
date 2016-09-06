@@ -1,16 +1,16 @@
 {
-    "name": "utils",
-    "description": "Utils for Nette Framework",
-    "main": "gulpfile.js",
-    "repository": {
-        "type": "git",
-        "url": "git@git.newtravel.cz:nattreid/utils.git"
-    },
-    "author": "Attreid",
-    "license": "Unlicense",
-    "devDependencies": {
-        "gulp": "^3.9.1",
-        "gulp-concat": "^2.6.0",
-        "gulp-uglify": "^2.0.0"
-    }
+  "name": "utils",
+  "description": "Utils for Nette Framework",
+  "main": "gulpfile.js",
+  "repository": {
+    "type": "git",
+    "url": "git@git.newtravel.cz:nattreid/utils.git"
+  },
+  "author": "Attreid",
+  "license": "Unlicense",
+  "devDependencies": {
+    "gulp": "^3.9.1",
+    "gulp-concat": "^2.6.0",
+    "gulp-uglify": "^2.0.0"
+  }
 }
