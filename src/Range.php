@@ -25,7 +25,7 @@ class Range
 	 */
 	public $to;
 
-	public function __construct(\DateTime $from = NULL, \DateTime $to = NULL)
+	public function __construct(\DateTime $from = null, \DateTime $to = null)
 	{
 		$this->from = $from ?: new \DateTime;
 		$this->to = $to ?: new \DateTime;

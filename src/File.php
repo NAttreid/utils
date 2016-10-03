@@ -18,9 +18,9 @@ class File
 	/**
 	 * Smazani adresare
 	 * @param string $directory adresar
-	 * @param boolean $removeDir smazat adresar (FALSE smaze jen obsah)
+	 * @param boolean $removeDir smazat adresar (false smaze jen obsah)
 	 */
-	public static function removeDir($directory, $removeDir = TRUE)
+	public static function removeDir($directory, $removeDir = true)
 	{
 		$dir = @dir($directory);
 		if ($dir) {
@@ -57,7 +57,7 @@ class File
 	 * @param boolean $remove
 	 * @throws IOException
 	 */
-	public static function extractZip($archive, $dir, $remove = FALSE)
+	public static function extractZip($archive, $dir, $remove = false)
 	{
 		$zip = new ZipArchive();
 		$x = $zip->open($archive);
@@ -132,11 +132,11 @@ class File
 	 * @param string $sufix
 	 * @throws IOException
 	 */
-	public static function extractGZ($archive, $sufix = NULL)
+	public static function extractGZ($archive, $sufix = null)
 	{
 		if ($sfp = @gzopen($archive, "rb")) {
 			$source = str_replace('.gz', '', $archive);
-			if ($sufix != NULL) {
+			if ($sufix != null) {
 				$source .= '.' . $sufix;
 			}
 			if ($fp = @fopen($source, "w")) {

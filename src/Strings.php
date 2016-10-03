@@ -60,7 +60,7 @@ class Strings
 	 * @param string $default
 	 * @return mixed
 	 */
-	public static function ifEmpty(&$var, $default = NULL)
+	public static function ifEmpty(&$var, $default = null)
 	{
 		if (empty($var)) {
 			$var = $default;

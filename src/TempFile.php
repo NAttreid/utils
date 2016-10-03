@@ -20,12 +20,12 @@ class TempFile
 
 	/**
 	 *
-	 * @param string $name pokud je NULL vygeneruje se random
+	 * @param string $name pokud je null vygeneruje se random
 	 * @param boolean $timePrefix
 	 */
-	public function __construct($name = NULL, $timePrefix = FALSE)
+	public function __construct($name = null, $timePrefix = false)
 	{
-		if ($name === NULL) {
+		if ($name === null) {
 			$name = Random::generate();
 		}
 		if ($timePrefix) {

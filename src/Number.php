@@ -90,7 +90,7 @@ class Number extends Lang
 	 * @param boolean $binary
 	 * @return string
 	 */
-	public static function size($number, $decimal = 2, $binary = FALSE)
+	public static function size($number, $decimal = 2, $binary = false)
 	{
 		if ($number > 1024 * 1024 * 1024) {
 			if ($binary) {

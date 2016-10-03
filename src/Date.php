@@ -173,12 +173,12 @@ class Date extends Lang
 	 * Vrati lokalizovany format data
 	 * @param \DateTime|int $datetime
 	 * @param array $formats
-	 * @return string|FALSE
+	 * @return string|false
 	 */
 	private static function formatDate($datetime, $formats)
 	{
 		if (empty($datetime)) {
-			return FALSE;
+			return false;
 		} elseif ($datetime instanceof \DateTime) {
 			$date = $datetime;
 		} else {
