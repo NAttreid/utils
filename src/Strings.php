@@ -76,11 +76,24 @@ class Strings extends \Nette\Utils\Strings
 		if (!is_array($needle)) {
 			$needle = [$needle];
 		}
+		return self::containsArray($haystack, $needle) !== false;
+	}
+
+	/**
+	 * Vrati retezec, ktery se v textu vyskytuje
+	 * @param string $haystack
+	 * @param string[] $needle
+	 * @return string|false
+	 */
+	public static function containsArray($haystack, array $needle)
+	{
 		foreach ($needle as $query) {
 			if (parent::contains($haystack, $query)) {
-				return true;
+				return $query;
 			}
 		}
 		return false;
 	}
+
+
 }
