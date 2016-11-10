@@ -2,14 +2,12 @@
 
 namespace NAttreid\Utils;
 
-use Nette\Utils\Strings as NStrings;
-
 /**
  * Pomocna trida pro retezce
  *
  * @author Attreid <attreid@gmail.com>
  */
-class Strings
+class Strings extends \Nette\Utils\Strings
 {
 
 	/**
@@ -25,7 +23,7 @@ class Strings
 		preg_match_all('/<a[^>]*>[^<]+<\/a>/i', $text, $found);
 		if (isset($found[0])) {
 			foreach ($found[0] as $kw) {
-				$keyWords[] = NStrings::lower(NStrings::trim(strip_tags($kw)));
+				$keyWords[] = self::lower(self::trim(strip_tags($kw)));
 			}
 		}
 
@@ -33,13 +31,13 @@ class Strings
 		preg_match_all('/<(h2|strong)[^>]*>[^<]+<\/(h2|strong)>/i', $text, $found);
 		if (isset($found[0])) {
 			foreach ($found[0] as $kw) {
-				$keyWords[] = NStrings::lower(NStrings::trim(strip_tags($kw)));
+				$keyWords[] = self::lower(self::trim(strip_tags($kw)));
 			}
 		}
 
 		$result = implode(', ', array_unique($keyWords));
 
-		return NStrings::truncate($result, $maxLen, '');
+		return self::truncate($result, $maxLen, '');
 	}
 
 	/**
@@ -68,4 +66,21 @@ class Strings
 		return $var;
 	}
 
+	/**
+	 * @param string $haystack
+	 * @param string|string[] $needle
+	 * @return bool
+	 */
+	public static function contains($haystack, $needle)
+	{
+		if (!is_array($needle)) {
+			$needle = [$needle];
+		}
+		foreach ($needle as $query) {
+			if (parent::contains($haystack, $query)) {
+				return true;
+			}
+		}
+		return false;
+	}
 }
