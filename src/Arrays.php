@@ -35,4 +35,15 @@ class Arrays
 		}
 	}
 
+	/**
+	 * Je pole vicerozmerne
+	 * @param array $a
+	 * @return bool
+	 */
+	public static function isMultidimensional(array $a)
+	{
+		$rv = array_filter($a, 'is_array');
+		return count($rv) > 0;
+	}
+
 }
