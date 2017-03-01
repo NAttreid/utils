@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types = 1);
+
 namespace NAttreid\Utils;
 
 /**
@@ -12,10 +14,10 @@ class Number extends Lang
 
 	/**
 	 * Vrati cislo v binarni velikosti
-	 * @param int $number
+	 * @param float|int $number
 	 * @return int
 	 */
-	private static function getBinary($number)
+	private static function getBinary(float $number): int
 	{
 		$num = 2;
 		if ($number < $num) {
@@ -38,7 +40,7 @@ class Number extends Lang
 	 * @param int $decimal
 	 * @return string
 	 */
-	public static function getNumber($number, $decimal = 2)
+	public static function getNumber(float $number, int $decimal = 2): string
 	{
 		if (is_numeric($number) && floor($number) == $number) {
 			$decimal = 0;
@@ -60,7 +62,7 @@ class Number extends Lang
 	 * @param int $decimal
 	 * @return string
 	 */
-	public static function percent($number, $total, $decimal = 2)
+	public static function percent(float $number, float $total, int $decimal = 2): string
 	{
 		return self::getNumber($number / $total * 100, $decimal) . '%';
 	}
@@ -70,7 +72,7 @@ class Number extends Lang
 	 * @param float $number
 	 * @return string
 	 */
-	public static function frequency($number)
+	public static function frequency(float $number): string
 	{
 		if ($number > 1000000000) {
 			return self::getNumber($number / 1000000000, 2) . ' GHz';
@@ -87,10 +89,10 @@ class Number extends Lang
 	 * Velikost souboru
 	 * @param float $number
 	 * @param int $decimal
-	 * @param boolean $binary
+	 * @param bool $binary
 	 * @return string
 	 */
-	public static function size($number, $decimal = 2, $binary = false)
+	public static function size(float $number, int $decimal = 2, bool $binary = false): string
 	{
 		if ($number > 1024 * 1024 * 1024) {
 			if ($binary) {

@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types = 1);
+
 namespace NAttreid\Utils;
 
 use Nette\SmartObject;
@@ -304,11 +306,7 @@ class PhoneNumber
 	/** @var bool */
 	private $valid = true;
 
-	/**
-	 * PhoneNumber constructor.
-	 * @param int $number
-	 */
-	public function __construct($number, $prefix = null)
+	public function __construct(string $number, string $prefix = null)
 	{
 		$this->number = $number;
 		if (self::validatePhone($number)) {
@@ -332,7 +330,7 @@ class PhoneNumber
 	/**
 	 * @return string
 	 */
-	public function getNumber()
+	public function getNumber(): string
 	{
 		return $this->number;
 	}
@@ -340,7 +338,7 @@ class PhoneNumber
 	/**
 	 * @return string
 	 */
-	public function getPrefix()
+	public function getPrefix(): string
 	{
 		return $this->prefix;
 	}
@@ -348,24 +346,25 @@ class PhoneNumber
 	/**
 	 * @return bool
 	 */
-	public function validate()
+	public function validate(): bool
 	{
 		return $this->valid;
 	}
 
 	/**
-	 * @return boolean
+	 * @param string $number
+	 * @return bool
 	 */
-	public static function validatePhone($number)
+	public static function validatePhone(string $number): bool
 	{
 		$number = Strings::replace($number, '/[-\.\s]+/');
-		return (boolean)preg_match('/^(\(?\+?([0-9]{1,4})\)?)?([0-9]{6,16})$/', $number);
+		return (bool)preg_match('/^(\(?\+?([0-9]{1,4})\)?)?([0-9]{6,16})$/', $number);
 	}
 
 	/**
 	 * @param string $number
 	 */
-	private function parseNumber($number)
+	private function parseNumber(string $number)
 	{
 		$prefix = Strings::containsArray($number, self::$phonePrefixes);
 		if ($prefix) {

@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types = 1);
+
 namespace NAttreid\Utils;
 
 /**
@@ -16,7 +18,7 @@ class Strings extends \Nette\Utils\Strings
 	 * @param int $maxLen
 	 * @return string
 	 */
-	public static function getKeyWords($text, $maxLen = 60)
+	public static function getKeyWords(string $text, int $maxLen = 60): string
 	{
 		$keyWords = [];
 		// nalezeni vsech linku v textu
@@ -43,9 +45,9 @@ class Strings extends \Nette\Utils\Strings
 	/**
 	 * Vrati email z textu
 	 * @param string $text
-	 * @return array
+	 * @return string[]
 	 */
-	public static function findEmails($text)
+	public static function findEmails(string $text): array
 	{
 		$result = [];
 		preg_match_all('/[a-z\d._%+-]+@[a-z\d.-]+\.[a-z]{2,4}\b/i', $text, $result);
@@ -55,10 +57,10 @@ class Strings extends \Nette\Utils\Strings
 	/**
 	 * Nastavi promenou na defaultni hodnotu pokud je prazdna
 	 * @param string $var
-	 * @param string $default
+	 * @param mixed $default
 	 * @return mixed
 	 */
-	public static function ifEmpty(&$var, $default = null)
+	public static function ifEmpty(string &$var, $default = null)
 	{
 		if (empty($var)) {
 			$var = $default;
@@ -85,7 +87,7 @@ class Strings extends \Nette\Utils\Strings
 	 * @param string[] $needle
 	 * @return string|false
 	 */
-	public static function containsArray($haystack, array $needle)
+	public static function containsArray(string $haystack, array $needle)
 	{
 		foreach ($needle as $query) {
 			if (parent::contains($haystack, $query)) {

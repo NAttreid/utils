@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types = 1);
+
 namespace NAttreid\Utils;
 
 use Nette\IOException;
@@ -18,9 +20,9 @@ class File
 	/**
 	 * Smazani adresare
 	 * @param string $directory adresar
-	 * @param boolean $removeDir smazat adresar (false smaze jen obsah)
+	 * @param bool $removeDir smazat adresar (false smaze jen obsah)
 	 */
-	public static function removeDir($directory, $removeDir = true)
+	public static function removeDir(string $directory, bool $removeDir = true)
 	{
 		$dir = @dir($directory);
 		if ($dir) {
@@ -43,9 +45,9 @@ class File
 	/**
 	 * Je adresar prazdny?
 	 * @param string $path
-	 * @return boolean
+	 * @return bool
 	 */
-	public static function isDirEmpty($path)
+	public static function isDirEmpty(string $path): bool
 	{
 		return (count(glob("$path/*")) === 0);
 	}
@@ -54,10 +56,10 @@ class File
 	 * Rozbaleni adresare ZIP
 	 * @param string $archive
 	 * @param string $dir
-	 * @param boolean $remove
+	 * @param bool $remove
 	 * @throws IOException
 	 */
-	public static function extractZip($archive, $dir, $remove = false)
+	public static function extractZip(string $archive, string $dir, bool $remove = false)
 	{
 		$zip = new ZipArchive();
 		$x = $zip->open($archive);
@@ -80,7 +82,7 @@ class File
 	 * @param string|array $sourcePath cesta k adresari k archivaci
 	 * @param string $outZipPath cesta k vystupnimu souboru zip
 	 */
-	public static function zip($sourcePath, $outZipPath)
+	public static function zip(string $sourcePath, string $outZipPath)
 	{
 		$zipFile = new ZipArchive();
 		$zipFile->open($outZipPath, ZipArchive::CREATE);
@@ -102,7 +104,7 @@ class File
 	 * @param string $sourcePath
 	 * @param ZipArchive $zipFile
 	 */
-	private static function addToZip($sourcePath, $zipFile)
+	private static function addToZip(string $sourcePath, ZipArchive $zipFile)
 	{
 		$source = new SplFileInfo($sourcePath);
 		$exclusiveLength = strlen(str_replace($source->getFilename(), '', $source->getRealPath()));
@@ -132,7 +134,7 @@ class File
 	 * @param string $sufix
 	 * @throws IOException
 	 */
-	public static function extractGZ($archive, $sufix = null)
+	public static function extractGZ(string $archive, string $sufix = null)
 	{
 		if ($sfp = @gzopen($archive, "rb")) {
 			$source = str_replace('.gz', '', $archive);
@@ -164,7 +166,7 @@ class File
 	 * @param callable $callable function($line)
 	 * @throws IOException
 	 */
-	public static function readFileLine($file, callable $callable)
+	public static function readFileLine(string $file, callable $callable)
 	{
 		if (!$handle = fopen($file, "r")) {
 			throw new IOException("File '$file' cannot be open.");
@@ -183,7 +185,7 @@ class File
 	 * @param string $path
 	 * @return float
 	 */
-	public static function size($path)
+	public static function size(string $path): float
 	{
 		if (is_file($path)) {
 			return filesize($path);
@@ -199,9 +201,9 @@ class File
 	/**
 	 * Vrati nazvy trid v souboru
 	 * @param string $file
-	 * @return array
+	 * @return string[]
 	 */
-	public static function getClasses($file)
+	public static function getClasses(string $file): array
 	{
 		$php_code = file_get_contents($file);
 		$classes = [];

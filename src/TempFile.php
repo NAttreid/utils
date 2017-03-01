@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types = 1);
+
 namespace NAttreid\Utils;
 
 use Nette\Utils\Random;
@@ -21,9 +23,9 @@ class TempFile
 	/**
 	 *
 	 * @param string $name pokud je null vygeneruje se random
-	 * @param boolean $timePrefix
+	 * @param bool $timePrefix
 	 */
-	public function __construct($name = null, $timePrefix = false)
+	public function __construct(string $name = null, bool $timePrefix = false)
 	{
 		if ($name === null) {
 			$name = Random::generate();
@@ -36,7 +38,11 @@ class TempFile
 		$this->handler = fopen($this->file, 'w+');
 	}
 
-	private function getUniqueFile($name)
+	/**
+	 * @param string $name
+	 * @return string
+	 */
+	private function getUniqueFile(string $name): string
 	{
 		$file = sys_get_temp_dir() . '/' . $name;
 		if (file_exists($file)) {
@@ -51,7 +57,7 @@ class TempFile
 	 * Zapise do souboru
 	 * @param string $str
 	 */
-	public function write($str)
+	public function write(string $str)
 	{
 		fwrite($this->handler, $str);
 	}

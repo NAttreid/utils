@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types = 1);
+
 namespace NAttreid\Utils;
 
 use Nette\Database\Table\Selection;
@@ -21,7 +23,7 @@ class Hasher
 	 * Konstruktor tridy
 	 * @param string $salt
 	 */
-	public function __construct($salt)
+	public function __construct(string $salt)
 	{
 		$this->salt = $salt;
 	}
@@ -31,7 +33,7 @@ class Hasher
 	 * @param string $string
 	 * @return string
 	 */
-	public function hash($string)
+	public function hash(string $string): string
 	{
 		return hash('sha256', $string . $this->salt);
 	}
@@ -42,8 +44,9 @@ class Hasher
 	 * @param string $column
 	 * @param string $hash
 	 * @return Selection|QueryBuilder
+	 * @throws InvalidArgumentException
 	 */
-	public function hashSQL($data, $column, $hash)
+	public function hashSQL($data, string $column, string $hash)
 	{
 		if ($data instanceof DbalCollection) {
 			$data = $data->getQueryBuilder();
@@ -61,11 +64,11 @@ class Hasher
 	 * Zkontroluje zda je hash vytvoren z daneho retezce
 	 * @param string $string
 	 * @param string $hash
-	 * @return boolean
+	 * @return bool
 	 */
-	public function check($string, $hash)
+	public function check(string $string, string $hash): bool
 	{
-		return $this->hash($string) == $hash;
+		return $this->hash($string) === $hash;
 	}
 
 }

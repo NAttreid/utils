@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types = 1);
+
 namespace NAttreid\Utils;
 
 /**
@@ -13,9 +15,9 @@ class Arrays
 	/**
 	 * Je pole asociativni
 	 * @param array $arr
-	 * @return boolean
+	 * @return bool
 	 */
-	public static function isAssoc(array $arr)
+	public static function isAssoc(array $arr): bool
 	{
 		return array_keys($arr) !== range(0, count($arr) - 1);
 	}
@@ -26,7 +28,7 @@ class Arrays
 	 * @param int $position
 	 * @param mixed $insert
 	 */
-	public static function slice(array &$array, $position, $insert)
+	public static function slice(array &$array, int $position, $insert)
 	{
 		if (isset($array[$position])) {
 			array_splice($array, $position, 0, [$insert]);
@@ -40,7 +42,7 @@ class Arrays
 	 * @param array $a
 	 * @return bool
 	 */
-	public static function isMultidimensional(array $a)
+	public static function isMultidimensional(array $a): bool
 	{
 		$rv = array_filter($a, 'is_array');
 		return count($rv) > 0;

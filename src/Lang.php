@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types = 1);
+
 namespace NAttreid\Utils;
 
 /**
@@ -20,7 +22,7 @@ abstract class Lang
 	 * Nastavi locale
 	 * @param string $locale
 	 */
-	public static function setLocale($locale)
+	public static function setLocale(string $locale)
 	{
 		self::$locale = $locale;
 	}
