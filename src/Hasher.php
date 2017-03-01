@@ -30,10 +30,10 @@ class Hasher
 
 	/**
 	 * Zahashuje retezec
-	 * @param string $string
+	 * @param mixed $string
 	 * @return string
 	 */
-	public function hash(string $string): string
+	public function hash($string): string
 	{
 		return hash('sha256', $string . $this->salt);
 	}
@@ -62,13 +62,13 @@ class Hasher
 
 	/**
 	 * Zkontroluje zda je hash vytvoren z daneho retezce
-	 * @param string $string
+	 * @param mixed $string
 	 * @param string $hash
 	 * @return bool
 	 */
-	public function check(string $string, string $hash): bool
+	public function check($string, string $hash): bool
 	{
-		return $this->hash($string) === $hash;
+		return $this->hash($string) == $hash;
 	}
 
 }
