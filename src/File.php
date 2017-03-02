@@ -82,17 +82,17 @@ class File
 	 * @param string|array $sourcePath cesta k adresari k archivaci
 	 * @param string $outZipPath cesta k vystupnimu souboru zip
 	 */
-	public static function zip(string $sourcePath, string $outZipPath)
+	public static function zip($sourcePath, string $outZipPath)
 	{
 		$zipFile = new ZipArchive();
 		$zipFile->open($outZipPath, ZipArchive::CREATE);
 
 		if (is_array($sourcePath)) {
 			foreach ($sourcePath as $source) {
-				self::addToZip($source, $zipFile);
+				self::addToZip((string)$source, $zipFile);
 			}
 		} else {
-			self::addToZip($sourcePath, $zipFile);
+			self::addToZip((string)$sourcePath, $zipFile);
 		}
 
 
