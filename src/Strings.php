@@ -60,7 +60,7 @@ class Strings extends \Nette\Utils\Strings
 	 * @param mixed $default
 	 * @return mixed
 	 */
-	public static function ifEmpty(string &$var, $default = null)
+	public static function ifEmpty(string &$var = null, $default = null)
 	{
 		if (empty($var)) {
 			$var = $default;
