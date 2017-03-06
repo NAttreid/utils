@@ -55,20 +55,6 @@ class Strings extends \Nette\Utils\Strings
 	}
 
 	/**
-	 * Nastavi promenou na defaultni hodnotu pokud je prazdna
-	 * @param string $var
-	 * @param mixed $default
-	 * @return mixed
-	 */
-	public static function ifEmpty(string &$var = null, $default = null)
-	{
-		if (empty($var)) {
-			$var = $default;
-		}
-		return $var;
-	}
-
-	/**
 	 * @param string $haystack
 	 * @param string|string[] $needle
 	 * @return bool
