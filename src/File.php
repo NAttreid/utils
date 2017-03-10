@@ -166,7 +166,7 @@ class File
 	 * @param callable $callable function($line)
 	 * @throws IOException
 	 */
-	public static function readFileLine(string $file, callable $callable)
+	public static function readLine(string $file, callable $callable)
 	{
 		if (!$handle = fopen($file, "r")) {
 			throw new IOException("File '$file' cannot be open.");
