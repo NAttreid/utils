@@ -2,7 +2,7 @@
   "name": "utils",
   "description": "Javascript Utils",
   "license": [
-    "Unlicense"
+    "MIT"
   ],
   "authors": [
     {
