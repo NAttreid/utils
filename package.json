@@ -4,7 +4,7 @@
   "main": "gulpfile.js",
   "repository": {
     "type": "git",
-    "url": "git@git.newtravel.cz:nattreid/utils.git"
+    "url": "git@github.com:nattreid/utils.git"
   },
   "author": "Attreid",
   "license": "MIT",
