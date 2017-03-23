@@ -1,5 +1,5 @@
 {
-  "name": "utils",
+  "name": "nattreid-utils",
   "description": "Utils for Nette Framework",
   "main": "gulpfile.js",
   "repository": {
