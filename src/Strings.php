@@ -84,16 +84,16 @@ class Strings extends \Nette\Utils\Strings
 	}
 
 	/**
-	 * @param  string $ip IP to check in IPV4 format eg. 127.0.0.1
-	 * @param  string $range IP/CIDR netmask eg. 127.0.0.0/24, also 127.0.0.1 is accepted and /32 assumed
+	 * @param string $ip IP ve formatu IPV4 napr. 127.0.0.1
+	 * @param string $range IP/CIDR maska napr. 127.0.0.0/24, take 127.0.0.1 je akceptovano jako /32
 	 * @return bool
 	 */
-	function ipInRange(string $ip, string $range): bool
+	public static function ipInRange(string $ip, string $range): bool
 	{
 		if (strpos($range, '/') == false) {
 			$range .= '/32';
 		}
-		// $range is in IP/CIDR format eg 127.0.0.1/24
+		// $range je v IP/CIDR formatu (127.0.0.1/24)
 		list($range, $netmask) = explode('/', $range, 2);
 		$range_decimal = ip2long($range);
 		$ip_decimal = ip2long($ip);
