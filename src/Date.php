@@ -1,6 +1,6 @@
 <?php
 
-declare(strict_types = 1);
+declare(strict_types=1);
 
 namespace NAttreid\Utils;
 
@@ -92,7 +92,7 @@ class Date extends Lang
 	{
 		$t = microtime(true);
 		$micro = sprintf('%06d', ($t - floor($t)) * 1000000);
-		$d = new DateTime(date('Y-m-d H:i:s.' . $micro, $t));
+		$d = new DateTime(date('Y-m-d H:i:s.' . $micro, (int) $t));
 		return $d->format('Y_m_d_H_i_s_u');
 	}
 
