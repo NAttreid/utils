@@ -48,14 +48,14 @@ class Date extends Lang
 
 	/** @var string[][] */
 	private static $datetime = [
-		'en' => 'm/d/Y H:i:s',
-		'cs' => 'd.m.Y H:i:s'
+		'en' => 'n/j/Y H:i:s',
+		'cs' => 'j.n.Y H:i:s'
 	];
 
 	/** @var string[][] */
 	private static $date = [
-		'en' => 'm/d/Y',
-		'cs' => 'd.m.Y'
+		'en' => 'n/j/Y',
+		'cs' => 'j.n.Y'
 	];
 
 	/**
