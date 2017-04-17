@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace NAttreid\Utils;
 
 use Datetime;
+use DateTimeImmutable;
 
 /**
  * Pomocna trida pro datum
@@ -194,7 +195,7 @@ class Date extends Lang
 	{
 		if (empty($datetime)) {
 			return false;
-		} elseif ($datetime instanceof DateTime) {
+		} elseif ($datetime instanceof DateTime || $datetime instanceof DateTimeImmutable) {
 			$date = $datetime;
 		} else {
 			$date = DateTime::createFromFormat('U', $datetime);
