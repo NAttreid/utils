@@ -21,6 +21,7 @@ class Date extends Lang
 		MONTH_SHORT = 'monthNamesShort',
 		MONTH = 'monthNames',
 		DATETIME = 'datetime',
+		DATE_WITH_TIME = 'dateWithtime',
 		DATE = 'date';
 
 	/** @var string[][] */
@@ -49,8 +50,14 @@ class Date extends Lang
 
 	/** @var string[][] */
 	private static $datetime = [
-		'en' => 'n/j/Y H:i:s',
-		'cs' => 'j.n.Y H:i:s'
+		'en' => 'n/j/Y G:i:s',
+		'cs' => 'j.n.Y G:i:s'
+	];
+
+	/** @var string[][] */
+	private static $dateWithtime = [
+		'en' => 'n/j/Y G:i',
+		'cs' => 'j.n.Y G:i'
 	];
 
 	/** @var string[][] */
@@ -211,6 +218,16 @@ class Date extends Lang
 	public static function getDateTime($datetime): string
 	{
 		return self::formatDate($datetime, self::$datetime);
+	}
+
+	/**
+	 * Lokalizovane datum s casem bez sekund
+	 * @param DateTime|int $datetime datum nebo timestamp
+	 * @return string
+	 */
+	public static function getDateWithTime($datetime): string
+	{
+		return self::formatDate($datetime, self::$dateWithtime);
 	}
 
 	/**
