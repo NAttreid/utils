@@ -9,7 +9,7 @@ namespace NAttreid\Utils;
  *
  * @author Attreid <attreid@gmail.com>
  */
-class Arrays
+class Arrays extends \Nette\Utils\Arrays
 {
 
 	/**
