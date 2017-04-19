@@ -1,6 +1,6 @@
 <?php
 
-declare(strict_types = 1);
+declare(strict_types=1);
 
 namespace NAttreid\Utils;
 
@@ -28,7 +28,7 @@ class Arrays
 	 * @param int $position
 	 * @param mixed $insert
 	 */
-	public static function slice(array &$array, int $position, $insert)
+	public static function slice(array &$array, int $position, $insert): void
 	{
 		if (isset($array[$position])) {
 			array_splice($array, $position, 0, [$insert]);

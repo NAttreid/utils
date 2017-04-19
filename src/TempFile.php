@@ -1,6 +1,6 @@
 <?php
 
-declare(strict_types = 1);
+declare(strict_types=1);
 
 namespace NAttreid\Utils;
 
@@ -57,7 +57,7 @@ class TempFile
 	 * Zapise do souboru
 	 * @param string $str
 	 */
-	public function write(string $str)
+	public function write(string $str): void
 	{
 		fwrite($this->handler, $str);
 	}

@@ -6,6 +6,7 @@ namespace NAttreid\Utils;
 
 use Datetime;
 use DateTimeImmutable;
+use InvalidArgumentException;
 
 /**
  * Pomocna trida pro datum
@@ -112,7 +113,10 @@ class Date extends Lang
 	public static function getDay($day): string
 	{
 		if ($day instanceof DateTime) {
-			$day = $day->format('N');
+			$day = (int) $day->format('N');
+		}
+		if (!is_int($day)) {
+			throw new InvalidArgumentException;
 		}
 		return self::$dayNames[self::$locale][$day];
 	}
@@ -125,7 +129,10 @@ class Date extends Lang
 	public static function getShortDay($day): string
 	{
 		if ($day instanceof DateTime) {
-			$day = $day->format('N');
+			$day = (int) $day->format('N');
+		}
+		if (!is_int($day)) {
+			throw new InvalidArgumentException;
 		}
 		return self::$dayNamesShort[self::$locale][$day];
 	}
@@ -138,7 +145,10 @@ class Date extends Lang
 	public static function getMonth($month): string
 	{
 		if ($month instanceof DateTime) {
-			$month = $month->format('j');
+			$month = (int) $month->format('j');
+		}
+		if (!is_int($month)) {
+			throw new InvalidArgumentException;
 		}
 		return self::$monthNames[self::$locale][$month];
 	}
@@ -151,7 +161,10 @@ class Date extends Lang
 	public static function getShortMonth($month): string
 	{
 		if ($month instanceof DateTime) {
-			$month = $month->format('j');
+			$month = (int) $month->format('j');
+		}
+		if (!is_int($month)) {
+			throw new InvalidArgumentException;
 		}
 		return self::$monthNamesShort[self::$locale][$month];
 	}
@@ -196,12 +209,12 @@ class Date extends Lang
 	 * Vrati lokalizovany format data
 	 * @param DateTime|int $datetime
 	 * @param array $formats
-	 * @return string|false
+	 * @return string|null
 	 */
-	private static function formatDate($datetime, array $formats)
+	private static function formatDate($datetime, array $formats): ?string
 	{
 		if (empty($datetime)) {
-			return false;
+			return null;
 		} elseif ($datetime instanceof DateTime || $datetime instanceof DateTimeImmutable) {
 			$date = $datetime;
 		} else {
@@ -213,9 +226,9 @@ class Date extends Lang
 	/**
 	 * Lokalizovane datum s casem
 	 * @param DateTime|int $datetime datum nebo timestamp
-	 * @return string
+	 * @return string|null
 	 */
-	public static function getDateTime($datetime): string
+	public static function getDateTime($datetime): ?string
 	{
 		return self::formatDate($datetime, self::$datetime);
 	}
@@ -223,9 +236,9 @@ class Date extends Lang
 	/**
 	 * Lokalizovane datum s casem bez sekund
 	 * @param DateTime|int $datetime datum nebo timestamp
-	 * @return string
+	 * @return string|null
 	 */
-	public static function getDateWithTime($datetime): string
+	public static function getDateWithTime($datetime): ?string
 	{
 		return self::formatDate($datetime, self::$dateWithtime);
 	}
@@ -233,9 +246,9 @@ class Date extends Lang
 	/**
 	 * Lokalizovane datum
 	 * @param DateTime|int $datetime datum nebo timestamp
-	 * @return string
+	 * @return string|null
 	 */
-	public static function getDate($datetime): string
+	public static function getDate($datetime): ?string
 	{
 		return self::formatDate($datetime, self::$date);
 	}

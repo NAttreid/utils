@@ -59,7 +59,7 @@ class Strings extends \Nette\Utils\Strings
 	 * @param string|string[] $needle
 	 * @return bool
 	 */
-	public static function contains($haystack, $needle)
+	public static function contains($haystack, $needle): bool
 	{
 		if (!is_array($needle)) {
 			$needle = [$needle];
@@ -71,16 +71,16 @@ class Strings extends \Nette\Utils\Strings
 	 * Vrati retezec, ktery se v textu vyskytuje
 	 * @param string $haystack
 	 * @param string[] $needle
-	 * @return string|false
+	 * @return string|null
 	 */
-	public static function containsArray(string $haystack, array $needle)
+	public static function containsArray(string $haystack, array $needle): ?string
 	{
 		foreach ($needle as $query) {
 			if (parent::contains($haystack, $query)) {
 				return $query;
 			}
 		}
-		return false;
+		return null;
 	}
 
 	/**

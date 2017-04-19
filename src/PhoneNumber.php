@@ -1,6 +1,6 @@
 <?php
 
-declare(strict_types = 1);
+declare(strict_types=1);
 
 namespace NAttreid\Utils;
 
@@ -358,13 +358,13 @@ class PhoneNumber
 	public static function validatePhone(string $number): bool
 	{
 		$number = Strings::replace($number, '/[-\.\s]+/');
-		return (bool)preg_match('/^(\(?\+?([0-9]{1,4})\)?)?([0-9]{6,16})$/', $number);
+		return (bool) preg_match('/^(\(?\+?([0-9]{1,4})\)?)?([0-9]{6,16})$/', $number);
 	}
 
 	/**
 	 * @param string $number
 	 */
-	private function parseNumber(string $number)
+	private function parseNumber(string $number): void
 	{
 		$prefix = Strings::containsArray($number, self::$phonePrefixes);
 		if ($prefix) {
