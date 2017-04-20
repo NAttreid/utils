@@ -218,7 +218,7 @@ class Date extends Lang
 		} elseif ($datetime instanceof DateTime || $datetime instanceof DateTimeImmutable) {
 			$date = $datetime;
 		} else {
-			$date = DateTime::createFromFormat('U', $datetime);
+			$date = DateTime::createFromFormat('U', (string) $datetime);
 		}
 		return $date->format($formats[self::$locale]);
 	}
