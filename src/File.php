@@ -4,8 +4,10 @@ declare(strict_types=1);
 
 namespace NAttreid\Utils;
 
+use LibXMLError;
 use Nette\IOException;
 use Nette\Utils\Finder;
+use SimpleXMLElement;
 use SplFileInfo;
 use ZipArchive;
 
@@ -162,18 +164,33 @@ class File
 	/**
 	 * Cteni ze souboru po radcich
 	 * @param string $file
-	 * @param callable $callable function($line)
+	 * @param callable $callable function($buffer, $line) $line -> cislo radku, pokud metoda vrati false, ukonci se cyklus
+	 * @param int|null $length
 	 * @throws IOException
 	 */
-	public static function readLine(string $file, callable $callable): void
+	public static function readLine(string $file, callable $callable, ?int $length = 4096): void
 	{
 		if (!$handle = fopen($file, "r")) {
 			throw new IOException("File '$file' cannot be open.");
 		}
-		while (($line = fgets($handle, 4096)) !== false) {
-			$callable($line);
+
+		$fgets = function () use (&$handle, &$length) {
+			if ($length !== null) {
+				return fgets($handle, $length);
+			} else {
+				return fgets($handle);
+			}
+		};
+
+		$line = 1;
+		$stopped = false;
+		while (($buffer = $fgets()) !== false) {
+			if ($callable($buffer, $line++) === false) {
+				$stopped = true;
+				break;
+			}
 		}
-		if (!feof($handle)) {
+		if (!$stopped && !feof($handle)) {
 			throw new IOException("Error: unexpected fgets() fail '$file'");
 		}
 		fclose($handle);
@@ -217,4 +234,44 @@ class File
 		return $classes;
 	}
 
+	/**
+	 * Parsuje XML
+	 * @param string $file
+	 * @return SimpleXMLElement
+	 * @throws IOException
+	 */
+	public static function parseXml(string $file): SimpleXMLElement
+	{
+		libxml_use_internal_errors(true);
+		$xml = simplexml_load_file($file);
+
+		if (!$xml) {
+			/* @var $errors LibXMLError[] */
+			$errors = libxml_get_errors();
+
+			$return = '';
+			foreach ($errors as $error) {
+				switch ($error->level) {
+					case LIBXML_ERR_WARNING:
+						$return .= "Warning $error->code ";
+						break;
+					case LIBXML_ERR_ERROR:
+						$return .= "Error $error->code ";
+						break;
+					case LIBXML_ERR_FATAL:
+						$return .= "Fatal Error $error->code ";
+						break;
+				}
+				$return .= "on line $error->line and column $error->column: " . trim($error->message) . ". ";
+			}
+
+			$return .= "File: $file";
+
+			libxml_clear_errors();
+			libxml_use_internal_errors(false);
+			throw new IOException($return);
+		}
+		libxml_use_internal_errors(false);
+		return $xml;
+	}
 }
