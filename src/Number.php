@@ -42,7 +42,7 @@ class Number extends Lang
 	 */
 	public static function getNumber(float $number, int $decimal = 2): string
 	{
-		if (is_numeric($number) && floor($number) == $number) {
+		if (floor($number) == $number) {
 			$decimal = 0;
 		}
 
