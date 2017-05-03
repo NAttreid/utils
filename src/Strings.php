@@ -64,7 +64,7 @@ class Strings extends \Nette\Utils\Strings
 		if (!is_array($needle)) {
 			$needle = [$needle];
 		}
-		return self::containsArray($haystack, $needle) !== false;
+		return self::containsArray($haystack, $needle) !== null;
 	}
 
 	/**
