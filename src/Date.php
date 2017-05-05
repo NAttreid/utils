@@ -7,6 +7,7 @@ namespace NAttreid\Utils;
 use Datetime;
 use DateTimeImmutable;
 use InvalidArgumentException;
+use Nette\SmartObject;
 
 /**
  * Pomocna trida pro datum
@@ -15,6 +16,7 @@ use InvalidArgumentException;
  */
 class Date extends Lang
 {
+	use SmartObject;
 
 	const
 		DAY_SHORT = 'dayNamesShort',
@@ -22,7 +24,7 @@ class Date extends Lang
 		MONTH_SHORT = 'monthNamesShort',
 		MONTH = 'monthNames',
 		DATETIME = 'datetime',
-		DATE_WITH_TIME = 'dateWithtime',
+		DATE_WITH_TIME = 'dateWithTime',
 		DATE = 'date';
 
 	/** @var string[][] */
@@ -56,7 +58,7 @@ class Date extends Lang
 	];
 
 	/** @var string[][] */
-	private static $dateWithtime = [
+	private static $dateWithTime = [
 		'en' => 'n/j/Y G:i',
 		'cs' => 'j.n.Y G:i'
 	];
@@ -240,7 +242,7 @@ class Date extends Lang
 	 */
 	public static function getDateWithTime($datetime): ?string
 	{
-		return self::formatDate($datetime, self::$dateWithtime);
+		return self::formatDate($datetime, self::$dateWithTime);
 	}
 
 	/**
