@@ -246,7 +246,7 @@ class Date extends Lang
 	 */
 	public static function getDate($datetime): ?string
 	{
-		return self::formatDate($datetime, self::getFormat(true, true, false));
+		return self::formatDate($datetime, self::getFormat(true, false, false));
 	}
 
 	/**
