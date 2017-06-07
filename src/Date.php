@@ -7,6 +7,7 @@ namespace NAttreid\Utils;
 use Datetime;
 use DateTimeImmutable;
 use InvalidArgumentException;
+use Nette\InvalidStateException;
 use Nette\SmartObject;
 
 /**
@@ -17,15 +18,6 @@ use Nette\SmartObject;
 class Date extends Lang
 {
 	use SmartObject;
-
-	const
-		DAY_SHORT = 'dayNamesShort',
-		DAY = 'dayNames',
-		MONTH_SHORT = 'monthNamesShort',
-		MONTH = 'monthNames',
-		DATETIME = 'datetime',
-		DATE_WITH_TIME = 'dateWithTime',
-		DATE = 'date';
 
 	/** @var string[][] */
 	private static $dayNamesShort = [
@@ -52,32 +44,54 @@ class Date extends Lang
 	];
 
 	/** @var string[][] */
-	private static $datetime = [
-		'en' => 'n/j/Y G:i:s',
-		'cs' => 'j.n.Y G:i:s'
-	];
-
-	/** @var string[][] */
-	private static $dateWithTime = [
-		'en' => 'n/j/Y G:i',
-		'cs' => 'j.n.Y G:i'
-	];
-
-	/** @var string[][] */
 	private static $date = [
 		'en' => 'n/j/Y',
 		'cs' => 'j.n.Y'
 	];
 
+	/** @var string[][] */
+	private static $time = [
+		'en' => 'G:i',
+		'cs' => 'G:i'
+	];
+
+	/** @var string[][] */
+	private static $seconds = [
+		'en' => ':s',
+		'cs' => ':s'
+	];
+
 	/**
 	 * Formatovani
-	 * @param string $type
+	 * @param bool $date
+	 * @param bool $time
+	 * @param bool $seconds
 	 * @return string
 	 */
-	public static function getFormat(string $type): string
+	public static function getFormat(bool $date = true, bool $time = true, bool $seconds = false): string
 	{
-		$arr = self::$$type;
-		return $arr[self::$locale];
+		$format = null;
+		if ($date) {
+			$format .= self::$date[self::$locale];
+		}
+
+		if ($time) {
+			if (!empty($format)) {
+				$format .= ' ';
+			}
+
+			$format .= self::$time[self::$locale];
+
+			if ($seconds) {
+				$format .= self::$seconds[self::$locale];
+			}
+		}
+
+		if ($format === null) {
+			throw new InvalidStateException;
+		}
+
+		return $format;
 	}
 
 	/**
@@ -210,10 +224,10 @@ class Date extends Lang
 	/**
 	 * Vrati lokalizovany format data
 	 * @param DateTime|int $datetime
-	 * @param array $formats
+	 * @param string $format
 	 * @return string|null
 	 */
-	private static function formatDate($datetime, array $formats): ?string
+	private static function formatDate($datetime, string $format): ?string
 	{
 		if (empty($datetime)) {
 			return null;
@@ -222,27 +236,7 @@ class Date extends Lang
 		} else {
 			$date = DateTime::createFromFormat('U', (string) $datetime);
 		}
-		return $date->format($formats[self::$locale]);
-	}
-
-	/**
-	 * Lokalizovane datum s casem
-	 * @param DateTime|int $datetime datum nebo timestamp
-	 * @return string|null
-	 */
-	public static function getDateTime($datetime): ?string
-	{
-		return self::formatDate($datetime, self::$datetime);
-	}
-
-	/**
-	 * Lokalizovane datum s casem bez sekund
-	 * @param DateTime|int $datetime datum nebo timestamp
-	 * @return string|null
-	 */
-	public static function getDateWithTime($datetime): ?string
-	{
-		return self::formatDate($datetime, self::$dateWithTime);
+		return $date->format($format);
 	}
 
 	/**
@@ -252,7 +246,29 @@ class Date extends Lang
 	 */
 	public static function getDate($datetime): ?string
 	{
-		return self::formatDate($datetime, self::$date);
+		return self::formatDate($datetime, self::getFormat(true, true, false));
+	}
+
+	/**
+	 * Lokalizovane datum s casem
+	 * @param DateTime|int $datetime datum nebo timestamp
+	 * @param bool $withSeconds
+	 * @return null|string
+	 */
+	public static function getDateTime($datetime, bool $withSeconds = false): ?string
+	{
+		return self::formatDate($datetime, self::getFormat(true, true, $withSeconds));
+	}
+
+	/**
+	 * Lokalizovany cas
+	 * @param DateTime|int $datetime datum nebo timestamp
+	 * @param bool $withSeconds
+	 * @return null|string
+	 */
+	public static function getTime($datetime, bool $withSeconds = false): ?string
+	{
+		return self::formatDate($datetime, self::getFormat(false, true, $withSeconds));
 	}
 
 	/**
