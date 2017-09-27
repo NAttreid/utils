@@ -4,21 +4,66 @@ declare(strict_types=1);
 
 namespace NAttreid\Utils;
 
+use Nette\SmartObject;
 use Nette\Utils\Random;
 
 /**
  * Docasny soubor
  *
+ * @property string $delimiter
+ * @property string $enclosure
+ * @property string $escapeChar
+ *
  * @author Attreid <attreid@gmail.com>
  */
 class TempFile
 {
+	use SmartObject;
 
 	/** @var string */
 	private $file;
 
 	/** @var resource */
 	private $handler;
+
+	/** @var string */
+	private $delimiter = ';';
+
+	/** @var string */
+	private $enclosure = '"';
+
+	/** @var string */
+	private $escapeChar = "\\";
+
+	protected function getDelimiter(): string
+	{
+		return $this->delimiter;
+	}
+
+	protected function setDelimiter(string $delimiter): void
+	{
+		$this->delimiter = $delimiter;
+	}
+
+	protected function getEnclosure(): string
+	{
+		return $this->enclosure;
+	}
+
+	protected function setEnclosure(string $enclosure): void
+	{
+		$this->enclosure = $enclosure;
+	}
+
+	protected function getEscapeChar(): string
+	{
+		return $this->escapeChar;
+	}
+
+	protected function setEscapeChar(string $escapeChar): void
+	{
+		$this->escapeChar = $escapeChar;
+	}
 
 	/**
 	 *
@@ -60,6 +105,15 @@ class TempFile
 	public function write(string $str): void
 	{
 		fwrite($this->handler, $str);
+	}
+
+	/**
+	 * Zapise jako csv radek
+	 * @param array $data
+	 */
+	public function writeCsv(array $data): void
+	{
+		fputcsv($this->handler, $data, $this->delimiter, $this->enclosure, $this->escapeChar);
 	}
 
 	public function __destruct()
