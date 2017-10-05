@@ -91,8 +91,8 @@ class TempFile
 	{
 		$file = sys_get_temp_dir() . '/' . $name;
 		if (file_exists($file)) {
-			$file .= Random::generate(1);
-			return $this->getUniqueFile($file);
+			$char = Random::generate(1);
+			return $this->getUniqueFile($char . '_' . $name);
 		} else {
 			return $file;
 		}
