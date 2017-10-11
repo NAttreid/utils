@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace NAttreid\Utils;
 
 use DateTime;
+use DateTimeInterface;
 
 /**
  * Datum od do
@@ -19,17 +20,17 @@ class Range
 
 	/**
 	 * Datum od
-	 * @var DateTime
+	 * @var DateTimeInterface
 	 */
 	public $from;
 
 	/**
 	 * Datum do
-	 * @var DateTime
+	 * @var DateTimeInterface
 	 */
 	public $to;
 
-	public function __construct(DateTime $from = null, DateTime $to = null)
+	public function __construct(DateTimeInterface $from = null, DateTimeInterface $to = null)
 	{
 		$this->from = $from ?: new DateTime;
 		$this->to = $to ?: new DateTime;

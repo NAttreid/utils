@@ -5,7 +5,7 @@ declare(strict_types=1);
 namespace NAttreid\Utils;
 
 use Datetime;
-use DateTimeImmutable;
+use DateTimeInterface;
 use InvalidArgumentException;
 use Nette\InvalidStateException;
 use Nette\SmartObject;
@@ -142,12 +142,12 @@ class Date extends Lang
 
 	/**
 	 * Vrati nazev dne
-	 * @param int|Datetime $day
+	 * @param int|DateTimeInterface $day
 	 * @return string
 	 */
 	public static function getDay($day): string
 	{
-		if ($day instanceof DateTime) {
+		if ($day instanceof DateTimeInterface) {
 			$day = (int) $day->format('N');
 		}
 		if (!is_int($day)) {
@@ -158,12 +158,12 @@ class Date extends Lang
 
 	/**
 	 * Vrati zkraceny nazev dne
-	 * @param int|Datetime $day
+	 * @param int|DateTimeInterface $day
 	 * @return string
 	 */
 	public static function getShortDay($day): string
 	{
-		if ($day instanceof DateTime) {
+		if ($day instanceof DateTimeInterface) {
 			$day = (int) $day->format('N');
 		}
 		if (!is_int($day)) {
@@ -174,12 +174,12 @@ class Date extends Lang
 
 	/**
 	 * Vrati nazev mesice
-	 * @param int|Datetime $month
+	 * @param int|DateTimeInterface $month
 	 * @return string
 	 */
 	public static function getMonth($month): string
 	{
-		if ($month instanceof DateTime) {
+		if ($month instanceof DateTimeInterface) {
 			$month = (int) $month->format('j');
 		}
 		if (!is_int($month)) {
@@ -190,12 +190,12 @@ class Date extends Lang
 
 	/**
 	 * Vrati zkraceny nazev mesice
-	 * @param int|Datetime $month
+	 * @param int|DateTimeInterface $month
 	 * @return string
 	 */
 	public static function getShortMonth($month): string
 	{
-		if ($month instanceof DateTime) {
+		if ($month instanceof DateTimeInterface) {
 			$month = (int) $month->format('j');
 		}
 		if (!is_int($month)) {
@@ -242,7 +242,7 @@ class Date extends Lang
 
 	/**
 	 * Vrati lokalizovany format data
-	 * @param DateTime|int $datetime
+	 * @param DateTimeInterface|int $datetime
 	 * @param string $format
 	 * @return string|null
 	 */
@@ -250,7 +250,7 @@ class Date extends Lang
 	{
 		if (empty($datetime)) {
 			return null;
-		} elseif ($datetime instanceof DateTime || $datetime instanceof DateTimeImmutable) {
+		} elseif ($datetime instanceof DateTimeInterface) {
 			$date = $datetime;
 		} else {
 			$date = DateTime::createFromFormat('U', (string) $datetime);
@@ -281,7 +281,7 @@ class Date extends Lang
 
 	/**
 	 * Lokalizovany cas
-	 * @param DateTime|int $datetime datum nebo timestamp
+	 * @param DateTimeInterface|int $datetime datum nebo timestamp
 	 * @param bool $withSeconds
 	 * @return null|string
 	 */
