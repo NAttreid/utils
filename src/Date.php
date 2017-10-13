@@ -180,7 +180,7 @@ class Date extends Lang
 	public static function getMonth($month): string
 	{
 		if ($month instanceof DateTimeInterface) {
-			$month = (int) $month->format('j');
+			$month = (int) $month->format('n');
 		}
 		if (!is_int($month)) {
 			throw new InvalidArgumentException;
@@ -196,7 +196,7 @@ class Date extends Lang
 	public static function getShortMonth($month): string
 	{
 		if ($month instanceof DateTimeInterface) {
-			$month = (int) $month->format('j');
+			$month = (int) $month->format('n');
 		}
 		if (!is_int($month)) {
 			throw new InvalidArgumentException;
