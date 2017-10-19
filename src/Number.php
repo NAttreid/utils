@@ -49,6 +49,9 @@ class Number extends Lang
 		switch (self::$locale) {
 			default:
 			case 'cs':
+			case 'sk':
+			case 'de':
+			case 'pl':
 				return number_format($number, $decimal, ',', ' ');
 			case 'en':
 				return number_format($number, $decimal);
