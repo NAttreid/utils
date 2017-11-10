@@ -9,6 +9,7 @@ use Nette\IOException;
 use Nette\Utils\Finder;
 use SimpleXMLElement;
 use SplFileInfo;
+use Tracy\Debugger;
 use ZipArchive;
 
 /**
@@ -110,22 +111,24 @@ class File
 		$source = new SplFileInfo($sourcePath);
 		$exclusiveLength = strlen(str_replace($source->getFilename(), '', $source->getRealPath()));
 
-		if ($source->isDir()) {
-			$zipFile->addEmptyDir($source->getFilename());
+		if ($source->isReadable()) {
+			if ($source->isDir()) {
+				$zipFile->addEmptyDir($source->getFilename());
 
-			foreach (Finder::findFiles('*')
-						 ->from($sourcePath) as $file) {
-				$filePath = $file->getRealPath();
-				$localPath = substr($filePath, $exclusiveLength);
+				foreach (Finder::findFiles('*')
+					         ->from($sourcePath) as $file) {
+					$filePath = $file->getRealPath();
+					$localPath = substr($filePath, $exclusiveLength);
 
-				if ($file->isDir()) {
-					$zipFile->addEmptyDir($localPath);
-				} else {
-					$zipFile->addFile($filePath, $localPath);
+					if ($file->isDir()) {
+						$zipFile->addEmptyDir($localPath);
+					} else {
+						$zipFile->addFile($filePath, $localPath);
+					}
 				}
+			} else {
+				$zipFile->addFile($source->getRealPath(), $source->getFilename());
 			}
-		} else {
-			$zipFile->addFile($source->getRealPath(), $source->getFilename());
 		}
 	}
 
