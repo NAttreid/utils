@@ -9,7 +9,6 @@ use Nette\IOException;
 use Nette\Utils\Finder;
 use SimpleXMLElement;
 use SplFileInfo;
-use Tracy\Debugger;
 use ZipArchive;
 
 /**
@@ -116,7 +115,8 @@ class File
 				$zipFile->addEmptyDir($source->getFilename());
 
 				foreach (Finder::findFiles('*')
-					         ->from($sourcePath) as $file) {
+							 ->from($sourcePath) as $file) {
+					/* @var $file \SplFileObject */
 					$filePath = $file->getRealPath();
 					$localPath = substr($filePath, $exclusiveLength);
 
