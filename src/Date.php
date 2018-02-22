@@ -260,7 +260,7 @@ class Date extends Lang
 
 	/**
 	 * Lokalizovane datum
-	 * @param DateTime|int $datetime datum nebo timestamp
+	 * @param DateTimeInterface|int $datetime datum nebo timestamp
 	 * @return string|null
 	 */
 	public static function getDate($datetime): ?string
@@ -270,7 +270,7 @@ class Date extends Lang
 
 	/**
 	 * Lokalizovane datum s casem
-	 * @param DateTime|int $datetime datum nebo timestamp
+	 * @param DateTimeInterface|int $datetime datum nebo timestamp
 	 * @param bool $withSeconds
 	 * @return null|string
 	 */
