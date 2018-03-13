@@ -6,34 +6,54 @@ namespace NAttreid\Utils;
 
 use DateTime;
 use DateTimeInterface;
+use Nette\SmartObject;
 
 /**
  * Datum od do
+ *
+ * @property DateTimeInterface $from datum od
+ * @property DateTimeInterface $to datum do
  *
  * @author Attreid <attreid@gmail.com>
  */
 class Range
 {
 
+	use SmartObject;
+
 	private static $delimiter = '--';
 	private static $format = 'Y-m-d';
 
-	/**
-	 * Datum od
-	 * @var DateTimeInterface
-	 */
-	public $from;
+	/** @var DateTimeInterface */
+	private $from;
 
-	/**
-	 * Datum do
-	 * @var DateTimeInterface
-	 */
-	public $to;
+	/** @var DateTimeInterface */
+	private $to;
 
 	public function __construct(DateTimeInterface $from = null, DateTimeInterface $to = null)
 	{
-		$this->from = $from ?: new DateTime;
-		$this->to = $to ?: new DateTime;
+		$this->from = $from ?? new DateTime;
+		$this->to = $to ?? new DateTime;
+	}
+
+	protected function getFrom(): DateTimeInterface
+	{
+		return $this->from;
+	}
+
+	protected function setFrom(DateTimeInterface $from): void
+	{
+		$this->from = $from;
+	}
+
+	protected function getTo(): DateTimeInterface
+	{
+		return $this->to;
+	}
+
+	protected function setTo(DateTimeInterface $to): void
+	{
+		$this->to = $to;
 	}
 
 	/**
