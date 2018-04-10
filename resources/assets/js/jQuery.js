@@ -291,4 +291,48 @@
         return jQuery.ajax(options);
     };
 
+    /**
+     * Je object na obrazovce
+     * @param test
+     * @returns {*}
+     */
+    $.fn.isOnScreen = function (test) {
+
+        var height = this.outerHeight();
+        var width = this.outerWidth();
+
+        if (!width || !height) {
+            return false;
+        }
+
+        var win = $(window);
+
+        var viewport = {
+            top: win.scrollTop(),
+            left: win.scrollLeft()
+        };
+        viewport.right = viewport.left + win.width();
+        viewport.bottom = viewport.top + win.height();
+
+        var bounds = this.offset();
+        bounds.right = bounds.left + width;
+        bounds.bottom = bounds.top + height;
+
+        var showing = {
+            top: viewport.bottom - bounds.top,
+            left: viewport.right - bounds.left,
+            bottom: bounds.bottom - viewport.top,
+            right: bounds.right - viewport.left
+        };
+
+        if (typeof test === 'function') {
+            return test(showing);
+        }
+
+        return showing.top > 0
+            && showing.left > 0
+            && showing.right > 0
+            && showing.bottom > 0;
+    };
+
 })(jQuery, window);

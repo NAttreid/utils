@@ -110,3 +110,9 @@ $.cachedScript("ajax/test.js").done(function (script, textStatus) {
     console.log(textStatus);
 });
 ```
+
+## isOnScreen
+Je object na obrazovce
+```javascript
+var isOnScreen = $('.obj').isOnScreen();
+```
