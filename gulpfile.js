@@ -17,7 +17,8 @@ var files = [
     paths.dev.js + 'RemoveDiacritics.js',
     paths.dev.js + 'jQuery.js',
     paths.dev.js + 'String.js',
-    paths.dev.js + 'Number.js'
+    paths.dev.js + 'Number.js',
+    paths.dev.js + 'Cookie.js'
 ];
 
 gulp.task('concat', function () {

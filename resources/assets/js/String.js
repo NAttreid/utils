@@ -1,6 +1,6 @@
 /**
  * Odstrani diakritiku
- * @returns {String.prototype@call;replace}
+ * @returns {string}
  */
 String.prototype.removeDiacritic = function () {
     return this.replace(/[^\u0000-\u007E]/g, function (a) {
@@ -12,7 +12,7 @@ String.prototype.removeDiacritic = function () {
  * Vlozi tag do hledaneho retezce (ignoruje diakritiku pri hledani)
  * @param {String} search
  * @param {String} tag
- * @returns {String|String@call;removeDiacritic@call;toLowerCase|String.prototype.injectTag.text}
+ * @returns {String}
  */
 String.prototype.injectTag = function (search, tag) {
     var text = this.removeDiacritic().toLowerCase();
@@ -37,8 +37,8 @@ String.prototype.injectTag = function (search, tag) {
 
 /**
  * Hash MD5
- * @returns {String|String@call;removeDiacritic@call;toLowerCase|String.prototype.injectTag.text}
+ * @returns {String}
  */
 String.prototype.hash = function () {
     return MD5Hasher.hash(this);
-}
+};
