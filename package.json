@@ -1,22 +1,23 @@
 {
- "name": "nattreid-utils",
- "description": "Utils for Nette Framework",
- "main": "./assets/utils.js",
- "repository": {
-  "type": "git",
-  "url": "git@github.com:nattreid/utils.git"
- },
- "author": {
-  "name": "Attreid",
-  "email": "attreid@gmail.com"
- },
- "license": "MIT",
- "dependencies": {
-  "jquery": "~3"
- },
- "devDependencies": {
-  "gulp": "~4",
-  "gulp-concat": "~2",
-  "gulp-uglify": "~3"
- }
+  "name": "nattreid-utils",
+  "description": "Utils for Nette Framework",
+  "main": "./assets/utils.js",
+  "version": "1.4.0",
+  "repository": {
+	"type": "git",
+	"url": "git@github.com:nattreid/utils.git"
+  },
+  "author": {
+	"name": "Attreid",
+	"email": "attreid@gmail.com"
+  },
+  "license": "MIT",
+  "dependencies": {
+	"jquery": "~3"
+  },
+  "devDependencies": {
+	"gulp": "~4",
+	"gulp-concat": "~2",
+	"gulp-uglify": "~3"
+  }
 }
