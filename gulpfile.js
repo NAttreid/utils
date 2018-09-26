@@ -5,7 +5,7 @@ var gulp = require('gulp'),
 var paths = {
     'dev': {
         'js': './resources/assets/js/',
-        'vendor': './resources/assets/vendor/'
+        'vendor': './node_modules/'
     },
     'production': {
         'js': './assets/'
@@ -44,7 +44,7 @@ gulp.task('boundled', function () {
 });
 
 gulp.task('watch', function () {
-    gulp.watch(paths.dev.js + '/*.js', ['concat', 'minify', 'boundled']);
+    gulp.watch(paths.dev.js + '/*.js', gulp.series('concat', 'minify', 'boundled'));
 });
 
-gulp.task('default', ['concat', 'minify', 'boundled', 'watch']); 
+gulp.task('default', gulp.series('concat', 'minify', 'boundled', 'watch'));

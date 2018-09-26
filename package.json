@@ -1,16 +1,22 @@
 {
-  "name": "nattreid-utils",
-  "description": "Utils for Nette Framework",
-  "main": "gulpfile.js",
-  "repository": {
-    "type": "git",
-    "url": "git@github.com:nattreid/utils.git"
-  },
-  "author": "Attreid",
-  "license": "MIT",
-  "devDependencies": {
-    "gulp": "^3.9.1",
-    "gulp-concat": "^2.6.0",
-    "gulp-uglify": "^2.0.0"
-  }
+ "name": "nattreid-utils",
+ "description": "Utils for Nette Framework",
+ "main": "./assets/utils.js",
+ "repository": {
+  "type": "git",
+  "url": "git@github.com:nattreid/utils.git"
+ },
+ "author": {
+  "name": "Attreid",
+  "email": "attreid@gmail.com"
+ },
+ "license": "MIT",
+ "dependencies": {
+  "jquery": "~3"
+ },
+ "devDependencies": {
+  "gulp": "~4",
+  "gulp-concat": "~2",
+  "gulp-uglify": "~3"
+ }
 }
