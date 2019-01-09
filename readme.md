@@ -116,3 +116,9 @@ Je object na obrazovce
 ```javascript
 var isOnScreen = $('.obj').isOnScreen();
 ```
+
+## playOnScroll
+Přehraje html5 video po najetí obrazovky na ně
+```javascript
+$.playOnScroll();
+```
