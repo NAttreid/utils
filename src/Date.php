@@ -26,6 +26,7 @@ class Date extends Lang
 		'de' => [1 => 'Mo', 2 => 'Di', 3 => 'Mi', 4 => 'Do', 5 => 'Fr', 6 => 'Sa', 7 => 'So'],
 		'sk' => [1 => 'po', 2 => 'ut', 3 => 'st', 4 => 'št', 5 => 'pia', 6 => 'so', 7 => 'ne'],
 		'pl' => [1 => 'pn', 2 => 'wt', 3 => 'śr', 4 => 'cz', 5 => 'pt', 6 => 'so', 7 => 'n'],
+		'es' => [1 => 'Lun', 2 => 'Mar', 3 => 'Mié', 4 => 'Jue', 5 => 'Vie', 6 => 'Sáb', 7 => 'Dom'],
 	];
 
 	/** @var string[][] */
@@ -35,6 +36,7 @@ class Date extends Lang
 		'de' => [1 => 'Montag', 2 => 'Dienstag', 3 => 'Mittwoch', 4 => 'Donnerstag', 5 => 'Freitag', 6 => 'Samstag', 7 => 'Sonntag'],
 		'sk' => [1 => 'pondelok', 2 => 'utorok', 3 => 'streda', 4 => 'štvrtok', 5 => 'piatok', 6 => 'sobota', 7 => 'nedeľa'],
 		'pl' => [1 => 'poniedziałek', 2 => 'wtorek', 3 => 'środa', 4 => 'czwartek', 5 => 'piątek', 6 => 'sobota', 7 => 'niedziela'],
+		'es' => [1 => 'Lunes', 2 => 'Martes', 3 => 'Miércoles', 4 => 'Jueves', 5 => 'Viernes', 6 => 'Sábado', 7 => 'Domingo'],
 	];
 
 	/** @var string[][] */
@@ -44,6 +46,7 @@ class Date extends Lang
 		'de' => [1 => 'Jan', 2 => 'Feb', 3 => 'Mär', 4 => 'Apr', 5 => 'Mai', 6 => 'Jun', 7 => 'Jul', 8 => 'Aug', 9 => 'Sep', 10 => 'Okt', 11 => 'Nov', 12 => 'Dez'],
 		'sk' => [1 => 'jan', 2 => 'feb', 3 => 'mar', 4 => 'apr', 5 => 'máj', 6 => 'jún', 7 => 'júl', 8 => 'aug', 9 => 'sep', 10 => 'okt', 11 => 'nov', 12 => 'dez'],
 		'pl' => [1 => 'sty', 2 => 'lu', 3 => 'mar', 4 => 'kw', 5 => 'maj', 6 => 'cze', 7 => 'lip', 8 => 'sie', 9 => 'wrz', 10 => 'pa', 11 => 'lis', 12 => 'gru'],
+		'es' => [1 => 'Ene', 2 => 'Feb', 3 => 'Mar', 4 => 'Abr', 5 => 'May', 6 => 'Jun', 7 => 'Jul', 8 => 'Ago', 9 => 'Sep', 10 => 'Oct', 11 => 'Nov', 12 => 'Dic'],
 	];
 
 	/** @var string[][] */
@@ -53,6 +56,7 @@ class Date extends Lang
 		'de' => [1 => 'Januar', 2 => 'Februar', 3 => 'März', 4 => 'April', 5 => 'Mai', 6 => 'Juni', 7 => 'Juli', 8 => 'August', 9 => 'September', 10 => 'Oktober', 11 => 'November', 12 => 'Dezember'],
 		'sk' => [1 => 'január', 2 => 'február', 3 => 'marec', 4 => 'apríl', 5 => 'máj', 6 => 'jún', 7 => 'júl', 8 => 'august', 9 => 'september', 10 => 'október', 11 => 'november', 12 => 'december'],
 		'pl' => [1 => 'styczeń', 2 => 'luty', 3 => 'marzec', 4 => 'kwiecień', 5 => 'maj', 6 => 'czerwiec', 7 => 'lipiec', 8 => 'sierpień', 9 => 'wrzesień', 10 => 'październik', 11 => 'listopad', 12 => 'grudzień'],
+		'es' => [1 => 'Enero', 2 => 'Febrero', 3 => 'Marzo', 4 => 'Abril', 5 => 'Mayo', 6 => 'Junio', 7 => 'Julio', 8 => 'Agosto', 9 => 'Septiembre', 10 => 'Octubre', 11 => 'Noviembre', 12 => 'Diciembre'],
 	];
 
 	/** @var string[][] */
@@ -62,6 +66,7 @@ class Date extends Lang
 		'de' => 'j.n.Y',
 		'sk' => 'j.n.Y',
 		'pl' => 'j.n.Y',
+		'es' => 'j/n/Y',
 	];
 
 	/** @var string[][] */
@@ -71,6 +76,7 @@ class Date extends Lang
 		'de' => 'G:i',
 		'sk' => 'G:i',
 		'pl' => 'G:i',
+		'es' => 'G:i',
 	];
 
 	/** @var string[][] */
@@ -78,6 +84,9 @@ class Date extends Lang
 		'en' => ':s',
 		'cs' => ':s',
 		'de' => ':s',
+		'sk' => ':s',
+		'pl' => ':s',
+		'es' => ':s',
 	];
 
 	/**
