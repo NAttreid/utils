@@ -68,7 +68,7 @@ class Hasher
 	 */
 	public function check($string, string $hash): bool
 	{
-		return $this->hash($string) == $hash;
+		return hash_equals($this->hash($string), $hash);
 	}
 
 }
