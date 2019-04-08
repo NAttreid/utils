@@ -23,6 +23,9 @@ class TempFile
 	/** @var string */
 	private $file;
 
+	/** @var string */
+	private $name;
+
 	/** @var resource */
 	private $handler;
 
@@ -79,6 +82,7 @@ class TempFile
 			$date = new \DateTime;
 			$name = $date->format('Y-m-d_H-i-s') . '_' . $name;
 		}
+		$this->name = $name;
 		$this->file = $this->getUniqueFile($name);
 		$this->handler = fopen($this->file, 'w+');
 	}
@@ -101,19 +105,41 @@ class TempFile
 	/**
 	 * Zapise do souboru
 	 * @param string $str
+	 * @return self
 	 */
-	public function write(string $str): void
+	public function write(string $str): self
 	{
 		fwrite($this->handler, $str);
+		return $this;
 	}
 
 	/**
 	 * Zapise jako csv radek
 	 * @param array $data
+	 * @return self
 	 */
-	public function writeCsv(array $data): void
+	public function writeCsv(array $data): self
 	{
 		fputcsv($this->handler, $data, $this->delimiter, $this->enclosure, $this->escapeChar);
+		return $this;
+	}
+
+	public function move(string $path): ?string
+	{
+		$file = $path . '/' . $this->name;
+		if (@rename($this->file, $file)) {
+			return $file;
+		}
+		return null;
+	}
+
+	public function copy(string $path): ?string
+	{
+		$file = $path . '/' . $this->name;
+		if (@copy($this->file, $file)) {
+			return $file;
+		}
+		return null;
 	}
 
 	public function __destruct()
