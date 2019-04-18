@@ -41,21 +41,34 @@ class Hasher
 	/**
 	 * Vyhleda podle hashe
 	 * @param Selection|QueryBuilder|DbalCollection $data
-	 * @param string $column
+	 * @param string|array $columns
 	 * @param string $hash
 	 * @return Selection|QueryBuilder
 	 * @throws InvalidArgumentException
 	 */
-	public function hashSQL($data, string $column, string $hash)
+	public function hashSQL($data, $columns, string $hash)
 	{
-		if ($data instanceof DbalCollection) {
-			$data = $data->getQueryBuilder();
+		if (is_string($columns)) {
+			$columns = [$columns];
 		}
 
-		if ($data instanceof Selection) {
-			return $data->where("SHA2(CONCAT(`$column`,  '{$this->salt}'), 256)", $hash);
-		} elseif ($data instanceof QueryBuilder) {
-			return $data->andWhere('SHA2(CONCAT(%column, %s), 256) = %s', $column, $this->salt, $hash);
+		if (is_array($columns)) {
+			if ($data instanceof DbalCollection) {
+				$data = $data->getQueryBuilder();
+			}
+
+			if ($data instanceof Selection) {
+				$col = '';
+				foreach ($columns as $column) {
+					if ($col !== '') {
+						$col += ',';
+					}
+					$col += '`$column`';
+				}
+				return $data->where("SHA2(CONCAT($columns,  '{$this->salt}'), 256)", $hash);
+			} elseif ($data instanceof QueryBuilder) {
+				return $data->andWhere('SHA2(CONCAT(%column[], %s), 256) = %s', $columns, $this->salt, $hash);
+			}
 		}
 		throw new InvalidArgumentException;
 	}
