@@ -2,7 +2,7 @@
   "name": "nattreid-utils",
   "description": "Utils for Nette Framework",
   "main": "./assets/utils.js",
-  "version": "1.5.5",
+  "version": "1.6.2",
   "repository": {
 	"type": "git",
 	"url": "git@github.com:nattreid/utils.git"
@@ -13,11 +13,11 @@
   },
   "license": "MIT",
   "dependencies": {
-	"jquery": "~3.3"
+	"jquery": "~3.4"
   },
   "devDependencies": {
-	"gulp": "~4.0",
+	"gulp": "^4.0.1",
 	"gulp-concat": "~2.6",
-	"gulp-uglify": "~3.0"
+	"gulp-uglify": "^3.0.2"
   }
 }
