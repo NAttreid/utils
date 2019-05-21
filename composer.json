@@ -13,14 +13,18 @@
   ],
   "require": {
     "php": ">= 7.1",
-    "nette/utils": "~2.4",
-    "nette/finder": "~2.4"
+    "nette/utils": "~3.0",
+    "nette/finder": "~2.5",
+    "ext-libxml": "*",
+    "ext-zip": "*",
+    "ext-zlib": "*",
+    "ext-simplexml": "*"
   },
   "require-dev": {
-    "nette/tester": "~1.7",
-    "nette/database": "~2.4",
-    "tracy/tracy": "~2.4",
-    "nextras/orm": "~3.0"
+    "nette/tester": "~2.2",
+    "nette/database": "~3.0",
+    "tracy/tracy": "~2.6",
+    "nextras/orm": "~3.1"
   },
   "autoload": {
     "classmap": [

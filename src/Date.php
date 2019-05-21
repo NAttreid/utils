@@ -6,6 +6,7 @@ namespace NAttreid\Utils;
 
 use Datetime;
 use DateTimeInterface;
+use Exception;
 use InvalidArgumentException;
 use Nette\InvalidStateException;
 use Nette\SmartObject;
@@ -148,6 +149,7 @@ class Date extends Lang
 	/**
 	 * Vrati aktualni cas na milivteriny
 	 * @return string
+	 * @throws Exception
 	 */
 	public static function getCurrentTimeStamp(): string
 	{
@@ -310,6 +312,7 @@ class Date extends Lang
 	/**
 	 * Vrati predchozi mesic
 	 * @return Range
+	 * @throws Exception
 	 */
 	public static function getPreviousMonth(): Range
 	{

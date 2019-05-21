@@ -61,11 +61,11 @@ class Hasher
 				$col = '';
 				foreach ($columns as $column) {
 					if ($col !== '') {
-						$col += ',';
+						$col .= ',';
 					}
-					$col += '`$column`';
+					$col .= "`$column`";
 				}
-				return $data->where("SHA2(CONCAT($columns,  '{$this->salt}'), 256)", $hash);
+				return $data->where("SHA2(CONCAT($col,  '{$this->salt}'), 256)", $hash);
 			} elseif ($data instanceof QueryBuilder) {
 				return $data->andWhere('SHA2(CONCAT(%column[], %s), 256) = %s', $columns, $this->salt, $hash);
 			}

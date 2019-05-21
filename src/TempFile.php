@@ -4,6 +4,8 @@ declare(strict_types=1);
 
 namespace NAttreid\Utils;
 
+use DateTime;
+use Exception;
 use Nette\SmartObject;
 use Nette\Utils\Random;
 
@@ -72,6 +74,7 @@ class TempFile
 	 *
 	 * @param string $name pokud je null vygeneruje se random
 	 * @param bool $timePrefix
+	 * @throws Exception
 	 */
 	public function __construct(string $name = null, bool $timePrefix = false)
 	{
@@ -79,7 +82,7 @@ class TempFile
 			$name = Random::generate();
 		}
 		if ($timePrefix) {
-			$date = new \DateTime;
+			$date = new DateTime;
 			$name = $date->format('Y-m-d_H-i-s') . '_' . $name;
 		}
 		$this->name = $name;
