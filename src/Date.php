@@ -29,7 +29,8 @@ class Date extends Lang
 		'pl' => [1 => 'pn', 2 => 'wt', 3 => 'śr', 4 => 'cz', 5 => 'pt', 6 => 'so', 7 => 'n'],
 		'es' => [1 => 'Lun', 2 => 'Mar', 3 => 'Mié', 4 => 'Jue', 5 => 'Vie', 6 => 'Sáb', 7 => 'Dom'],
 		'hu' => [1 => 'hét', 2 => 'kedd', 3 => 'sze', 4 => 'csüt', 5 => 'pén', 6 => 'szo', 7 => 'vas'],
-
+		'ro' => [1 => 'Lun', 2 => 'Mar', 3 => 'Mie', 4 => 'Joi', 5 => 'Vin', 6 => 'Sâm', 7 => 'Dum'],
+		'tr' => [1 => 'Pt', 2 => 'Sa', 3 => 'Ça', 4 => 'Pe', 5 => 'Cu', 6 => 'Ct', 7 => 'Pz'],
 	];
 
 	/** @var string[][] */
@@ -41,6 +42,8 @@ class Date extends Lang
 		'pl' => [1 => 'poniedziałek', 2 => 'wtorek', 3 => 'środa', 4 => 'czwartek', 5 => 'piątek', 6 => 'sobota', 7 => 'niedziela'],
 		'es' => [1 => 'Lunes', 2 => 'Martes', 3 => 'Miércoles', 4 => 'Jueves', 5 => 'Viernes', 6 => 'Sábado', 7 => 'Domingo'],
 		'hu' => [1 => 'hétfő', 2 => 'kedd', 3 => 'szerda', 4 => 'csütörtök', 5 => 'péntek', 6 => 'szombat', 7 => 'vasárnap'],
+		'ro' => [1 => 'Luni', 2 => 'Marţi', 3 => 'Miercuri', 4 => 'Joi', 5 => 'Vineri', 6 => 'Sâmbătă', 7 => 'Duminică'],
+		'tr' => [1 => 'Pazartesi', 2 => 'Salı', 3 => 'Çarşamba', 4 => 'Perşembe', 5 => 'Cuma', 6 => 'Cumartesi', 7 => 'Pazar'],
 	];
 
 	/** @var string[][] */
@@ -52,6 +55,8 @@ class Date extends Lang
 		'pl' => [1 => 'sty', 2 => 'lu', 3 => 'mar', 4 => 'kw', 5 => 'maj', 6 => 'cze', 7 => 'lip', 8 => 'sie', 9 => 'wrz', 10 => 'pa', 11 => 'lis', 12 => 'gru'],
 		'es' => [1 => 'Ene', 2 => 'Feb', 3 => 'Mar', 4 => 'Abr', 5 => 'May', 6 => 'Jun', 7 => 'Jul', 8 => 'Ago', 9 => 'Sep', 10 => 'Oct', 11 => 'Nov', 12 => 'Dic'],
 		'hu' => [1 => 'jan', 2 => 'feb', 3 => 'márc', 4 => 'ápr', 5 => 'máj', 6 => 'jún', 7 => 'júl', 8 => 'aug', 9 => 'szept', 10 => 'okt', 11 => 'nov', 12 => 'dec'],
+		'ro' => [1 => 'Ian', 2 => 'Feb', 3 => 'Mar', 4 => 'Apr', 5 => 'Mai', 6 => 'Iun', 7 => 'Iul', 8 => 'Aug', 9 => 'Sep', 10 => 'Oct', 11 => 'Nov', 12 => 'Dec'],
+		'tr' => [1 => 'Oca', 2 => 'Şub', 3 => 'Mar', 4 => 'Nis', 5 => 'May', 6 => 'Haz', 7 => 'Tem', 8 => 'Ağu', 9 => 'Eyl', 10 => 'Eki', 11 => 'Kas', 12 => 'Ara'],
 	];
 
 	/** @var string[][] */
@@ -63,6 +68,8 @@ class Date extends Lang
 		'pl' => [1 => 'styczeń', 2 => 'luty', 3 => 'marzec', 4 => 'kwiecień', 5 => 'maj', 6 => 'czerwiec', 7 => 'lipiec', 8 => 'sierpień', 9 => 'wrzesień', 10 => 'październik', 11 => 'listopad', 12 => 'grudzień'],
 		'es' => [1 => 'Enero', 2 => 'Febrero', 3 => 'Marzo', 4 => 'Abril', 5 => 'Mayo', 6 => 'Junio', 7 => 'Julio', 8 => 'Agosto', 9 => 'Septiembre', 10 => 'Octubre', 11 => 'Noviembre', 12 => 'Diciembre'],
 		'hu' => [1 => 'január', 2 => 'február', 3 => 'március', 4 => 'április', 5 => 'május', 6 => 'június', 7 => 'július', 8 => 'augusztus', 9 => 'szeptember', 10 => 'október', 11 => 'november', 12 => 'december'],
+		'ro' => [1 => 'Ianuarie', 2 => 'Februarie', 3 => 'Martie', 4 => 'Aprilie', 5 => 'Mai', 6 => 'Iunie', 7 => 'Iulie', 8 => 'August', 9 => 'Septembrie', 10 => 'Octombrie', 11 => 'Noiembrie', 12 => 'Decembrie'],
+		'tr' => [1 => 'Oca', 2 => 'Şub', 3 => 'március', 4 => 'április', 5 => 'május', 6 => 'június', 7 => 'július', 8 => 'augusztus', 9 => 'szeptember', 10 => 'október', 11 => 'november', 12 => 'december'],
 	];
 
 	/** @var string[][] */
@@ -74,6 +81,8 @@ class Date extends Lang
 		'pl' => 'j.n.Y',
 		'es' => 'j/n/Y',
 		'hu' => 'Y.n.j.',
+		'ro' => 'j/n/Y',
+		'tr' => 'j/n/Y',
 	];
 
 	/** @var string[][] */
@@ -85,6 +94,8 @@ class Date extends Lang
 		'pl' => 'G:i',
 		'es' => 'G:i',
 		'hu' => 'G:i',
+		'ro' => 'G:i',
+		'tr' => 'G:i',
 	];
 
 	/** @var string[][] */
@@ -96,6 +107,8 @@ class Date extends Lang
 		'pl' => ':s',
 		'es' => ':s',
 		'hu' => ':s',
+		'ro' => ':s',
+		'tr' => ':s',
 	];
 
 	/**
