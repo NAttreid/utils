@@ -13,7 +13,7 @@
   ],
   "require": {
     "php": ">= 7.1",
-    "nette/utils": "~3.0",
+    "nette/utils": "~2.5",
     "nette/finder": "~2.5",
     "ext-libxml": "*",
     "ext-zip": "*",
@@ -22,7 +22,7 @@
   },
   "require-dev": {
     "nette/tester": "~2.2",
-    "nette/database": "~3.0",
+    "nette/database": "~2.4",
     "tracy/tracy": "~2.6",
     "nextras/orm": "~3.1"
   },
