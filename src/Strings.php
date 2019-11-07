@@ -59,7 +59,7 @@ class Strings extends \Nette\Utils\Strings
 	 * @param string|string[] $needle
 	 * @return bool
 	 */
-	public static function contains(string $haystack, string $needle): bool
+	public static function contains($haystack, $needle): bool
 	{
 		if (!is_array($needle)) {
 			$needle = [$needle];
