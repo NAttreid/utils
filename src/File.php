@@ -281,34 +281,37 @@ class File
 
 	public static function isImageValid(string $file): bool
 	{
-		$img = imagecreatefromjpeg($file);
-		$imageW = imagesx($img);
-		$imageH = imagesy($img);
+		$img = @imagecreatefromjpeg($file);
+		if ($img) {
+			$imageW = imagesx($img);
+			$imageH = imagesy($img);
 
-		$last_height = $imageH - 5;
+			$last_height = $imageH - 5;
 
-		$foo = [];
+			$foo = [];
 
-		for ($x = 0; $x <= $imageW; $x++) {
-			for ($y = $last_height; $y <= $imageH; $y++) {
-				$rgb = @imagecolorat($img, $x, $y);
+			for ($x = 0; $x <= $imageW; $x++) {
+				for ($y = $last_height; $y <= $imageH; $y++) {
+					$rgb = @imagecolorat($img, $x, $y);
 
-				$r = ($rgb >> 16) & 0xFF;
-				$g = ($rgb >> 8) & 0xFF;
-				$b = $rgb & 0xFF;
+					$r = ($rgb >> 16) & 0xFF;
+					$g = ($rgb >> 8) & 0xFF;
+					$b = $rgb & 0xFF;
 
-				if ($r != 0) {
-					$foo[] = $r;
+					if ($r != 0) {
+						$foo[] = $r;
+					}
 				}
 			}
+
+			$bar = array_count_values($foo);
+
+			$gray = (isset($bar['127']) ? $bar['127'] : 0) + (isset($bar['128']) ? $bar['128'] : 0) + (isset($bar['129']) ? $bar['129'] : 0);
+			$total = count($foo);
+			$other = $total - $gray;
+
+			return $other >= $gray;
 		}
-
-		$bar = array_count_values($foo);
-
-		$gray = (isset($bar['127']) ? $bar['127'] : 0) + (isset($bar['128']) ? $bar['128'] : 0) + (isset($bar['129']) ? $bar['129'] : 0);
-		$total = count($foo);
-		$other = $total - $gray;
-
-		return $other >= $gray;
+		return false;
 	}
 }
