@@ -13,7 +13,7 @@
   },
   "license": "MIT",
   "dependencies": {
-	"jquery": "~3.4"
+	"jquery": "~3.5"
   },
   "devDependencies": {
 	"gulp": "^4.0.1",
