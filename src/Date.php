@@ -31,6 +31,7 @@ class Date extends Lang
 		'hu' => [1 => 'hét', 2 => 'kedd', 3 => 'sze', 4 => 'csüt', 5 => 'pén', 6 => 'szo', 7 => 'vas'],
 		'ro' => [1 => 'Lun', 2 => 'Mar', 3 => 'Mie', 4 => 'Joi', 5 => 'Vin', 6 => 'Sâm', 7 => 'Dum'],
 		'tr' => [1 => 'Pt', 2 => 'Sa', 3 => 'Ça', 4 => 'Pe', 5 => 'Cu', 6 => 'Ct', 7 => 'Pz'],
+		'ru' => [1 => 'Пн', 2 => 'Вт', 3 => 'Ср', 4 => 'Чт', 5 => 'Пт', 6 => 'Сб', 7 => 'Вс'],
 	];
 
 	/** @var string[][] */
@@ -44,6 +45,7 @@ class Date extends Lang
 		'hu' => [1 => 'hétfő', 2 => 'kedd', 3 => 'szerda', 4 => 'csütörtök', 5 => 'péntek', 6 => 'szombat', 7 => 'vasárnap'],
 		'ro' => [1 => 'Luni', 2 => 'Marţi', 3 => 'Miercuri', 4 => 'Joi', 5 => 'Vineri', 6 => 'Sâmbătă', 7 => 'Duminică'],
 		'tr' => [1 => 'Pazartesi', 2 => 'Salı', 3 => 'Çarşamba', 4 => 'Perşembe', 5 => 'Cuma', 6 => 'Cumartesi', 7 => 'Pazar'],
+		'ru' => [1 => 'понедельник', 2 => 'вторник', 3 => 'среда', 4 => 'четверг', 5 => 'пятница', 6 => 'суббота', 7 => 'воскресенье'],
 	];
 
 	/** @var string[][] */
@@ -57,6 +59,7 @@ class Date extends Lang
 		'hu' => [1 => 'jan', 2 => 'feb', 3 => 'márc', 4 => 'ápr', 5 => 'máj', 6 => 'jún', 7 => 'júl', 8 => 'aug', 9 => 'szept', 10 => 'okt', 11 => 'nov', 12 => 'dec'],
 		'ro' => [1 => 'Ian', 2 => 'Feb', 3 => 'Mar', 4 => 'Apr', 5 => 'Mai', 6 => 'Iun', 7 => 'Iul', 8 => 'Aug', 9 => 'Sep', 10 => 'Oct', 11 => 'Nov', 12 => 'Dec'],
 		'tr' => [1 => 'Oca', 2 => 'Şub', 3 => 'Mar', 4 => 'Nis', 5 => 'May', 6 => 'Haz', 7 => 'Tem', 8 => 'Ağu', 9 => 'Eyl', 10 => 'Eki', 11 => 'Kas', 12 => 'Ara'],
+		'ru' => [1 => 'Янв', 2 => 'Фев', 3 => 'Мар', 4 => 'Апр', 5 => 'Май', 6 => 'Июн', 7 => 'Июл', 8 => 'Авг', 9 => 'Сен', 10 => 'Окт', 11 => 'Ноя', 12 => 'Дек'],
 	];
 
 	/** @var string[][] */
@@ -70,6 +73,7 @@ class Date extends Lang
 		'hu' => [1 => 'január', 2 => 'február', 3 => 'március', 4 => 'április', 5 => 'május', 6 => 'június', 7 => 'július', 8 => 'augusztus', 9 => 'szeptember', 10 => 'október', 11 => 'november', 12 => 'december'],
 		'ro' => [1 => 'Ianuarie', 2 => 'Februarie', 3 => 'Martie', 4 => 'Aprilie', 5 => 'Mai', 6 => 'Iunie', 7 => 'Iulie', 8 => 'August', 9 => 'Septembrie', 10 => 'Octombrie', 11 => 'Noiembrie', 12 => 'Decembrie'],
 		'tr' => [1 => 'Oca', 2 => 'Şub', 3 => 'március', 4 => 'április', 5 => 'május', 6 => 'június', 7 => 'július', 8 => 'augusztus', 9 => 'szeptember', 10 => 'október', 11 => 'november', 12 => 'december'],
+		'ru' => [1 => 'Январь', 2 => 'Февраль', 3 => 'Март', 4 => 'Апрель', 5 => 'Май', 6 => 'Июнь', 7 => 'Июль', 8 => 'Август', 9 => 'Сентябрь', 10 => 'Октябрь', 11 => 'Ноябрь', 12 => 'Декабрь'],
 	];
 
 	/** @var string[][] */
@@ -83,6 +87,7 @@ class Date extends Lang
 		'hu' => 'Y.n.j.',
 		'ro' => 'j/n/Y',
 		'tr' => 'j/n/Y',
+		'ru' => 'j.n.Y',
 	];
 
 	/** @var string[][] */
@@ -96,6 +101,7 @@ class Date extends Lang
 		'hu' => 'G:i',
 		'ro' => 'G:i',
 		'tr' => 'G:i',
+		'ru' => 'G:i',
 	];
 
 	/** @var string[][] */
@@ -109,6 +115,7 @@ class Date extends Lang
 		'hu' => ':s',
 		'ro' => ':s',
 		'tr' => ':s',
+		'ru' => ':s',
 	];
 
 	/**
