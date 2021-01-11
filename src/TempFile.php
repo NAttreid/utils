@@ -117,6 +117,16 @@ class TempFile
 	}
 
 	/**
+	 * @param string $str
+	 * @return self
+	 */
+	public function puts(string $str): self
+	{
+		fputs($this->handler, $str);
+		return $this;
+	}
+
+	/**
 	 * Zapise jako csv radek
 	 * @param array $data
 	 * @return self
