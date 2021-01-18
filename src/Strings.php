@@ -101,4 +101,34 @@ class Strings extends \Nette\Utils\Strings
 		$netmask_decimal = ~$wildcard_decimal;
 		return (($ip_decimal & $netmask_decimal) == ($range_decimal & $netmask_decimal));
 	}
+
+	public static function validateEmail(string $email): bool
+	{
+		list(, $domain) = explode('@', $email);
+		return
+			checkdnsrr($domain) &&
+			!in_array($domain, [
+				'1gmail.com',
+				'gamail.com',
+				'gamil.com',
+				'gimail.com',
+				'gimel.com',
+				'gmail.com.com',
+				'gmaio.com',
+				'gnail.com',
+				'hahoo.com',
+				'iahoo.com',
+				'iahoo.it',
+				'uahoo.com',
+				'yahho.com',
+				'yaho.com',
+				'yaho.ro',
+				'yahoi.com',
+				'yahoo.com.com',
+				'yahoomayl.com',
+				'yahuu.com',
+				'yaoo.com',
+				'yhoo.com'
+			]);
+	}
 }
