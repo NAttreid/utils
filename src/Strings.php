@@ -104,31 +104,116 @@ class Strings extends \Nette\Utils\Strings
 
 	public static function validateEmail(string $email): bool
 	{
+		$correctDomains = [
+			'gmail.com',
+			'yahoo.com',
+			'yahoo.ru',
+			'yahoo.it',
+			'icloud.com',
+			'hotmail.com',
+			'hotmail.es',
+			'citromail.hu',
+			'freemail.hu',
+			'onet.pl',
+			'wp.pl',
+		];
+
+		$invalidDomains = [
+			'acloud.com',
+			'ahoo.com',
+			'cirtomail.hu',
+			'citromil.hu',
+			'e-mail.com',
+			'email.com',
+			'facebook.com',
+			'fmail.com',
+			'freemai.hu',
+			'freemali.hu',
+			'freenail.hu',
+			'gail.com',
+			'gamai.com',
+			'gamail.com',
+			'gamal.com',
+			'gameil.com',
+			'gamel.com',
+			'gamil.com',
+			'ganil.com',
+			'gemai.com',
+			'gimail.com',
+			'gimail.ro',
+			'gimeil.com',
+			'gimel.com',
+			'ginel.com',
+			'gma.com',
+			'gmai.com',
+			'gmail.co.com',
+			'gmail.com',
+			'gmail.com.com',
+			'gmailyahoo.com',
+			'gmaio.com',
+			'gmajl.com',
+			'gmalil.com',
+			'gmaul.com',
+			'gmeil.com',
+			'gmeil.pl',
+			'gmil.com',
+			'gml.com',
+			'gmsil.com',
+			'gnail.com',
+			'golmail.com',
+			'hahoo.com',
+			'hitmail.com',
+			'hom.com.com',
+			'hormail.es',
+			'hotmi.com',
+			'hotmsil.de',
+			'hotnail.hu',
+			'iahoo.com',
+			'iahoo.it',
+			'iclaud.com',
+			'iclod.com',
+			'iclud.com',
+			'incloud.com',
+			'jmail.com',
+			'mail.com',
+			'mil.com',
+			'onet.com.pl',
+			'stonline.sk',
+			'uahoo.com',
+			'vp.pl',
+			'yahho.com',
+			'yaho.com',
+			'yaho.ro',
+			'yahoi.com',
+			'yahoo.co.com',
+			'yahoo.com.com',
+			'yahoomayl.com',
+			'yahooo.com',
+			'yahuu.com',
+			'yaoo.com',
+			'yhau.com',
+			'yhoo.com',
+			'yhoo.com.com',
+			'yohoo.com',
+			'yoo.com'
+		];
+
+		$correctDomains = str_replace('.', '\.', implode('|', $correctDomains));
+
 		list(, $domain) = explode('@', $email);
-		return
-			checkdnsrr($domain) &&
-			!in_array($domain, [
-				'1gmail.com',
-				'gamail.com',
-				'gamil.com',
-				'gimail.com',
-				'gimel.com',
-				'gmail.com.com',
-				'gmaio.com',
-				'gnail.com',
-				'hahoo.com',
-				'iahoo.com',
-				'iahoo.it',
-				'uahoo.com',
-				'yahho.com',
-				'yaho.com',
-				'yaho.ro',
-				'yahoi.com',
-				'yahoo.com.com',
-				'yahoomayl.com',
-				'yahuu.com',
-				'yaoo.com',
-				'yhoo.com'
-			]);
+
+		if (!checkdnsrr($domain)) {
+			return false;
+		}
+		if (preg_match('/[0-9]+(' . $correctDomains . ')/i', $domain)) {
+			return false;
+		}
+		if (preg_match('/(' . $correctDomains . ')\..*/i', $domain)) {
+			return false;
+		}
+		if (in_array($domain, $invalidDomains)) {
+			return false;
+		}
+		return true;
 	}
 }
