@@ -147,7 +147,6 @@ class Strings extends \Nette\Utils\Strings
 			'gma.com',
 			'gmai.com',
 			'gmail.co.com',
-			'gmail.com',
 			'gmail.com.com',
 			'gmailyahoo.com',
 			'gmaio.com',
