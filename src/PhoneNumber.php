@@ -358,7 +358,7 @@ class PhoneNumber
 	public static function validatePhone(string $number): bool
 	{
 		$number = Strings::replace($number, '/[-\.\s]+/');
-		return (bool) preg_match('/^(\(?\+?([0-9]{1,4})\)?)?([0-9]{6,16})$/', $number);
+		return (bool)preg_match('/^(\(?\+?([0-9]{1,4})\)?)?([0-9]{6,16})$/', $number);
 	}
 
 	/**
@@ -369,23 +369,34 @@ class PhoneNumber
 		$prefix = Strings::containsArray($number, self::$phonePrefixes);
 		if ($prefix) {
 			$number = str_replace($prefix, '', $number);
-			if ($prefix === '+420' && strlen($number) != 9) {
-			} elseif ($prefix === '+421' && strlen($number) != 9) {
-			} else {
-				$this->prefix = $prefix;
-				$this->number = $number;
+			if ($prefix === '+420' && strlen($number) !== 9) {
+				$this->valid = false;
+				$this->prefix = null;
 				return;
+			}
+
+			if ($prefix === '+421') {
+				if (strlen($number) === 10 && Strings::startsWith($number, '0')) {
+					$this->prefix = $prefix;
+					$this->number = Strings::substring($number, 1, 9);
+					return;
+				}
+
+				if (strlen($number) !== 9) {
+					$this->valid = false;
+					$this->prefix = null;
+					return;
+				}
+
 			}
 		}
 
-		$this->valid = false;
-		$this->prefix = null;
+		$this->prefix = $prefix;
+		$this->number = $number;
 	}
 
 	function __toString()
 	{
 		return ($this->prefix ? $this->prefix . ' ' : '') . $this->number;
 	}
-
-
 }
