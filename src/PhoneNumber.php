@@ -389,6 +389,8 @@ class PhoneNumber
 				}
 
 			}
+		} else {
+			$this->valid = false;
 		}
 
 		$this->prefix = $prefix;
