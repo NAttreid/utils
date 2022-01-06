@@ -92,10 +92,10 @@ class File
 
 		if (is_array($sourcePath)) {
 			foreach ($sourcePath as $source) {
-				self::addToZip((string) $source, $zipFile);
+				self::addToZip((string)$source, $zipFile);
 			}
 		} else {
-			self::addToZip((string) $sourcePath, $zipFile);
+			self::addToZip((string)$sourcePath, $zipFile);
 		}
 
 		$zipFile->close();
@@ -281,7 +281,20 @@ class File
 
 	public static function isImageValid(string $file): bool
 	{
-		$img = @imagecreatefromjpeg($file);
+		$type = exif_imagetype($file);
+		switch ($type) {
+			case 1:
+				$img = @imagecreatefromgif($file);
+				break;
+			case 2:
+				$img = @imagecreatefromjpeg($file);
+				break;
+			case 3:
+				$img = @imagecreatefrompng($file);
+				break;
+			default:
+				return false;
+		}
 		if ($img) {
 			$imageW = imagesx($img);
 			$imageH = imagesy($img);
