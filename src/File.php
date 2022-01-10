@@ -281,7 +281,7 @@ class File
 
 	public static function isImageValid(string $file): bool
 	{
-		$type = exif_imagetype($file);
+		$type = @exif_imagetype($file);
 		switch ($type) {
 			case 1:
 				$img = @imagecreatefromgif($file);
