@@ -7,18 +7,19 @@
   ],
   "authors": [
     {
-      "name": "Attreid",
-      "email": "attreid@gmail.com"
+      "name": "Attreid"
     }
   ],
   "require": {
-    "php": ">= 7.1",
+    "php": ">= 7.4",
     "nette/utils": "~3.0",
     "nette/finder": "~2.5",
     "ext-libxml": "*",
     "ext-zip": "*",
     "ext-zlib": "*",
-    "ext-simplexml": "*"
+    "ext-simplexml": "*",
+    "ext-gd": "*",
+    "ext-exif": "*"
   },
   "require-dev": {
     "nette/tester": "~2.4",

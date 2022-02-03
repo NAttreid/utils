@@ -7,39 +7,23 @@ namespace NAttreid\Utils;
 use Nette\Database\Table\Selection;
 use Nette\InvalidArgumentException;
 use Nextras\Dbal\QueryBuilder\QueryBuilder;
-use Nextras\Orm\Mapper\Dbal\DbalCollection;
+use Nextras\Orm\Collection\DbalCollection;
 
-/**
- * Pomocna trida pro hashovani
- *
- * @author Attreid <attreid@gmail.com>
- */
 class Hasher
 {
+	private string $salt;
 
-	private $salt;
-
-	/**
-	 * Konstruktor tridy
-	 * @param string $salt
-	 */
 	public function __construct(string $salt)
 	{
 		$this->salt = $salt;
 	}
 
-	/**
-	 * Zahashuje retezec
-	 * @param mixed $string
-	 * @return string
-	 */
-	public function hash($string): string
+	public function hash(string $string): string
 	{
 		return hash('sha256', $string . $this->salt);
 	}
 
 	/**
-	 * Vyhleda podle hashe
 	 * @param Selection|QueryBuilder|DbalCollection $data
 	 * @param string|array $columns
 	 * @param string $hash
@@ -73,13 +57,7 @@ class Hasher
 		throw new InvalidArgumentException;
 	}
 
-	/**
-	 * Zkontroluje zda je hash vytvoren z daneho retezce
-	 * @param mixed $string
-	 * @param string $hash
-	 * @return bool
-	 */
-	public function check($string, string $hash): bool
+	public function check(string $string, string $hash): bool
 	{
 		return hash_equals($this->hash($string), $hash);
 	}

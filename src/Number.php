@@ -4,19 +4,9 @@ declare(strict_types=1);
 
 namespace NAttreid\Utils;
 
-/**
- * Pomocna trida pro cisla
- *
- * @author Attreid <attreid@gmail.com>
- */
 class Number extends Lang
 {
 
-	/**
-	 * Vrati cislo v binarni velikosti
-	 * @param float|int $number
-	 * @return int
-	 */
 	private static function getBinary(float $number): int
 	{
 		$num = 2;
@@ -31,15 +21,8 @@ class Number extends Lang
 			}
 			$result = $num;
 		}
-		return 0;
 	}
 
-	/**
-	 * Vrati zformatovane cislo
-	 * @param float $number
-	 * @param int $decimal
-	 * @return string
-	 */
 	public static function getNumber(float $number, int $decimal = 2): string
 	{
 		if (floor($number) == $number) {
@@ -54,23 +37,11 @@ class Number extends Lang
 		}
 	}
 
-	/**
-	 * Procenta
-	 * @param float $number
-	 * @param float $total
-	 * @param int $decimal
-	 * @return string
-	 */
 	public static function percent(float $number, float $total, int $decimal = 2): string
 	{
 		return self::getNumber($number / $total * 100, $decimal) . '%';
 	}
 
-	/**
-	 * Frekvence
-	 * @param float $number
-	 * @return string
-	 */
 	public static function frequency(float $number): string
 	{
 		if ($number > 1000000000) {
@@ -84,13 +55,6 @@ class Number extends Lang
 		}
 	}
 
-	/**
-	 * Velikost souboru
-	 * @param float $number
-	 * @param int $decimal
-	 * @param bool $binary
-	 * @return string
-	 */
 	public static function size(float $number, int $decimal = 2, bool $binary = false): string
 	{
 		if ($number > 1024 * 1024 * 1024) {
@@ -119,5 +83,4 @@ class Number extends Lang
 			return self::getNumber($number, $decimal) . ' B';
 		}
 	}
-
 }

@@ -9,26 +9,19 @@ use DateTimeInterface;
 use Nette\SmartObject;
 
 /**
- * Datum od do
- *
  * @property DateTimeInterface $from datum od
  * @property DateTimeInterface $to datum do
- *
- * @author Attreid <attreid@gmail.com>
  */
 class Range
 {
 
 	use SmartObject;
 
-	private static $delimiter = '--';
-	private static $format = 'Y-m-d';
+	private static string $delimiter = '--';
+	private static string $format = 'Y-m-d';
 
-	/** @var DateTimeInterface */
-	private $from;
-
-	/** @var DateTimeInterface */
-	private $to;
+	private ?DateTimeInterface $from;
+	private ?DateTimeInterface $to;
 
 	public function __construct(DateTimeInterface $from = null, DateTimeInterface $to = null)
 	{
@@ -56,11 +49,6 @@ class Range
 		$this->to = $to;
 	}
 
-	/**
-	 * Vytvori objekt z retezce intervalu
-	 * @param string $interval
-	 * @return self
-	 */
 	public static function createFromString(string $interval): self
 	{
 		list($from, $to) = explode(self::$delimiter, $interval);

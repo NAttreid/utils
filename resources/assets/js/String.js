@@ -1,5 +1,4 @@
 /**
- * Odstrani diakritiku
  * @returns {string}
  */
 String.prototype.removeDiacritic = function () {
@@ -9,7 +8,6 @@ String.prototype.removeDiacritic = function () {
 };
 
 /**
- * Vlozi tag do hledaneho retezce (ignoruje diakritiku pri hledani)
  * @param {String} search
  * @param {String} tag
  * @returns {String}

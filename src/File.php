@@ -12,19 +12,8 @@ use SplFileInfo;
 use SplFileObject;
 use ZipArchive;
 
-/**
- * Pomocna trida pro praci se soubory
- *
- * @author Attreid <attreid@gmail.com>
- */
 class File
 {
-
-	/**
-	 * Smazani adresare
-	 * @param string $directory adresar
-	 * @param bool $removeDir smazat adresar (false smaze jen obsah)
-	 */
 	public static function removeDir(string $directory, bool $removeDir = true): void
 	{
 		$dir = @dir($directory);
@@ -45,23 +34,12 @@ class File
 		}
 	}
 
-	/**
-	 * Je adresar prazdny?
-	 * @param string $path
-	 * @return bool
-	 */
 	public static function isDirEmpty(string $path): bool
 	{
 		return (count(glob("$path/*")) === 0);
 	}
 
-	/**
-	 * Rozbaleni adresare ZIP
-	 * @param string $archive
-	 * @param string $dir
-	 * @param bool $remove
-	 * @throws IOException
-	 */
+	/** @throws IOException */
 	public static function extractZip(string $archive, string $dir, bool $remove = false): void
 	{
 		$zip = new ZipArchive();
@@ -80,10 +58,7 @@ class File
 	}
 
 	/**
-	 * Zazipuje soubor/y nebo adresar|e
-	 *
-	 * @param string|array $sourcePath cesta k adresari k archivaci
-	 * @param string $outZipPath cesta k vystupnimu souboru zip
+	 * @param string|array $sourcePath
 	 */
 	public static function zip($sourcePath, string $outZipPath): void
 	{
@@ -101,11 +76,6 @@ class File
 		$zipFile->close();
 	}
 
-	/**
-	 * Prida source do zipu
-	 * @param string $sourcePath
-	 * @param ZipArchive $zipFile
-	 */
 	private static function addToZip(string $sourcePath, ZipArchive $zipFile): void
 	{
 		$source = new SplFileInfo($sourcePath);
@@ -133,12 +103,6 @@ class File
 		}
 	}
 
-	/**
-	 * Rozbaleni adresare GZ
-	 * @param string $archive
-	 * @param string $sufix
-	 * @throws IOException
-	 */
 	public static function extractGZ(string $archive, string $sufix = null): void
 	{
 		if ($sfp = @gzopen($archive, "rb")) {
@@ -166,10 +130,7 @@ class File
 	}
 
 	/**
-	 * Cteni ze souboru po radcich
-	 * @param string $file
-	 * @param callable $callable function($buffer, $line) $line -> cislo radku, pokud metoda vrati false, ukonci se cyklus
-	 * @param int|null $length
+	 * @param callable $callable function($buffer, $line) $line -> line number, if false exit
 	 * @throws IOException
 	 */
 	public static function readLine(string $file, callable $callable, ?int $length = 4096): void
@@ -200,11 +161,6 @@ class File
 		fclose($handle);
 	}
 
-	/**
-	 * Vrati velikost souboru nebo slozky
-	 * @param string $path
-	 * @return float
-	 */
 	public static function size(string $path): float
 	{
 		if (is_file($path)) {
@@ -218,11 +174,6 @@ class File
 		}
 	}
 
-	/**
-	 * Vrati nazvy trid v souboru
-	 * @param string $file
-	 * @return string[]
-	 */
 	public static function getClasses(string $file): array
 	{
 		$php_code = file_get_contents($file);
@@ -238,19 +189,13 @@ class File
 		return $classes;
 	}
 
-	/**
-	 * Parsuje XML
-	 * @param string $file
-	 * @return SimpleXMLElement
-	 * @throws IOException
-	 */
+	/** @throws IOException */
 	public static function parseXml(string $file): SimpleXMLElement
 	{
 		libxml_use_internal_errors(true);
 		$xml = simplexml_load_file($file);
 
 		if (!$xml) {
-			/* @var $errors LibXMLError[] */
 			$errors = libxml_get_errors();
 
 			$return = '';
@@ -319,7 +264,7 @@ class File
 
 			$bar = array_count_values($foo);
 
-			$gray = (isset($bar['127']) ? $bar['127'] : 0) + (isset($bar['128']) ? $bar['128'] : 0) + (isset($bar['129']) ? $bar['129'] : 0);
+			$gray = ($bar['127'] ?? 0) + ($bar['128'] ?? 0) + ($bar['129'] ?? 0);
 			$total = count($foo);
 			$other = $total - $gray;
 

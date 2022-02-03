@@ -8,8 +8,7 @@
   "url": "git@github.com:nattreid/utils.git"
  },
  "author": {
-  "name": "Attreid",
-  "email": "attreid@gmail.com"
+  "name": "Attreid"
  },
  "license": "MIT",
  "dependencies": {

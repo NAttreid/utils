@@ -11,15 +11,12 @@ use Nette\SmartObject;
  *
  * @property-read string $prefix
  * @property-read string $number
- *
- * @author Attreid <attreid@gmail.com>
  */
 class PhoneNumber
 {
 	use SmartObject;
 
-	/** @var string[] */
-	private static $phonePrefixes = [
+	private static array $phonePrefixes = [
 		'+1',
 		'+20',
 		'+27',
@@ -296,15 +293,9 @@ class PhoneNumber
 		'+998',
 		'+999',
 	];
-
-	/** @var string */
-	private $prefix;
-
-	/** @var int */
-	private $number;
-
-	/** @var bool */
-	private $valid = true;
+	private ?string $prefix = null;
+	private string $number;
+	private bool $valid = true;
 
 	public function __construct(string $number, string $prefix = null)
 	{
@@ -313,7 +304,7 @@ class PhoneNumber
 			$this->prefix = $prefix;
 
 			$number = Strings::replace($number, array(
-				'/[-\.\s]+/' => '', // remove separators
+				'/[-\.\s]+/' => '',
 				'/^00([0-9]{6,16})$/' => '+$1'
 			));
 
@@ -327,43 +318,27 @@ class PhoneNumber
 		}
 	}
 
-	/**
-	 * @return string
-	 */
 	public function getNumber(): string
 	{
 		return $this->number;
 	}
 
-	/**
-	 * @return string
-	 */
 	public function getPrefix(): string
 	{
 		return $this->prefix;
 	}
 
-	/**
-	 * @return bool
-	 */
 	public function validate(): bool
 	{
 		return $this->valid;
 	}
 
-	/**
-	 * @param string $number
-	 * @return bool
-	 */
 	public static function validatePhone(string $number): bool
 	{
 		$number = Strings::replace($number, '/[-\.\s]+/');
 		return (bool)preg_match('/^(\(?\+?([0-9]{1,4})\)?)?([0-9]{6,16})$/', $number);
 	}
 
-	/**
-	 * @param string $number
-	 */
 	private function parseNumber(string $number): void
 	{
 		$prefix = Strings::containsArray($number, self::$phonePrefixes);

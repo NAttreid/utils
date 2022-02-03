@@ -1,5 +1,4 @@
 /**
- * Format cisla
  * @param {int} decimals
  * @param {int} decPoint
  * @param {String} thousandSeparator

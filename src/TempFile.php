@@ -10,35 +10,22 @@ use Nette\SmartObject;
 use Nette\Utils\Random;
 
 /**
- * Docasny soubor
- *
  * @property string $delimiter
  * @property string $enclosure
  * @property string $escapeChar
- *
- * @author Attreid <attreid@gmail.com>
  */
 class TempFile
 {
 	use SmartObject;
 
-	/** @var string */
-	private $file;
-
-	/** @var string */
-	private $name;
-
 	/** @var resource */
 	private $handler;
 
-	/** @var string */
-	private $delimiter = ';';
-
-	/** @var string */
-	private $enclosure = '"';
-
-	/** @var string */
-	private $escapeChar = "\\";
+	private string $file;
+	private string $name;
+	private string $delimiter = ';';
+	private string $enclosure = '"';
+	private string $escapeChar = "\\";
 
 	protected function getDelimiter(): string
 	{
@@ -70,12 +57,6 @@ class TempFile
 		$this->escapeChar = $escapeChar;
 	}
 
-	/**
-	 *
-	 * @param string $name pokud je null vygeneruje se random
-	 * @param bool $timePrefix
-	 * @throws Exception
-	 */
 	public function __construct(string $name = null, bool $timePrefix = false)
 	{
 		if ($name === null) {
@@ -90,10 +71,6 @@ class TempFile
 		$this->handler = fopen($this->file, 'w+');
 	}
 
-	/**
-	 * @param string $name
-	 * @return string
-	 */
 	private function getUniqueFile(string $name): string
 	{
 		$file = sys_get_temp_dir() . '/' . $name;
@@ -105,32 +82,18 @@ class TempFile
 		}
 	}
 
-	/**
-	 * Zapise do souboru
-	 * @param string $str
-	 * @return self
-	 */
 	public function write(string $str): self
 	{
 		fwrite($this->handler, $str);
 		return $this;
 	}
 
-	/**
-	 * @param string $str
-	 * @return self
-	 */
 	public function puts(string $str): self
 	{
 		fputs($this->handler, $str);
 		return $this;
 	}
 
-	/**
-	 * Zapise jako csv radek
-	 * @param array $data
-	 * @return self
-	 */
 	public function writeCsv(array $data): self
 	{
 		fputcsv($this->handler, $data, $this->delimiter, $this->enclosure, $this->escapeChar);
@@ -165,5 +128,4 @@ class TempFile
 	{
 		return $this->file;
 	}
-
 }
