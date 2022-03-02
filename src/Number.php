@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace NAttreid\Utils;
 
-class Number extends Lang
+final class Number extends Lang
 {
 
 	private static function getBinary(float $number): int

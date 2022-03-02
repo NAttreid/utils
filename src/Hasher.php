@@ -9,7 +9,7 @@ use Nette\InvalidArgumentException;
 use Nextras\Dbal\QueryBuilder\QueryBuilder;
 use Nextras\Orm\Collection\DbalCollection;
 
-class Hasher
+final class Hasher
 {
 	private string $salt;
 

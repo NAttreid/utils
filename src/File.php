@@ -12,7 +12,7 @@ use SplFileInfo;
 use SplFileObject;
 use ZipArchive;
 
-class File
+final class File
 {
 	public static function removeDir(string $directory, bool $removeDir = true): void
 	{

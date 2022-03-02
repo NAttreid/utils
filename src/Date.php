@@ -11,7 +11,7 @@ use InvalidArgumentException;
 use Nette\InvalidStateException;
 use Nette\SmartObject;
 
-class Date extends Lang
+final class Date extends Lang
 {
 	use SmartObject;
 

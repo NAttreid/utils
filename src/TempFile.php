@@ -14,7 +14,7 @@ use Nette\Utils\Random;
  * @property string $enclosure
  * @property string $escapeChar
  */
-class TempFile
+final class TempFile
 {
 	use SmartObject;
 

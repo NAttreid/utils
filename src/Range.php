@@ -12,7 +12,7 @@ use Nette\SmartObject;
  * @property DateTimeInterface $from datum od
  * @property DateTimeInterface $to datum do
  */
-class Range
+final class Range
 {
 
 	use SmartObject;

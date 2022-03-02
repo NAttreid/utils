@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace NAttreid\Utils;
 
-class Strings extends \Nette\Utils\Strings
+final class Strings extends \Nette\Utils\Strings
 {
 
 	public static function getKeyWords(string $text, int $maxLen = 60): string

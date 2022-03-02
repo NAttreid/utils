@@ -12,7 +12,7 @@ use Nette\SmartObject;
  * @property-read string $prefix
  * @property-read string $number
  */
-class PhoneNumber
+final class PhoneNumber
 {
 	use SmartObject;
 

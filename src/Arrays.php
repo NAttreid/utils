@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace NAttreid\Utils;
 
-class Arrays extends \Nette\Utils\Arrays
+final class Arrays extends \Nette\Utils\Arrays
 {
 
 	public static function isAssoc(array $arr): bool
