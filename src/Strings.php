@@ -174,7 +174,6 @@ class Strings extends \Nette\Utils\Strings
 			'iclud.com',
 			'incloud.com',
 			'jmail.com',
-			'mail.com',
 			'mil.com',
 			'onet.com.pl',
 			'stonline.sk',
