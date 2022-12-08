@@ -158,7 +158,6 @@ class TempFile
 	public function __destruct()
 	{
 		fclose($this->handler);
-		@unlink($this->file);
 	}
 
 	public function __toString()
